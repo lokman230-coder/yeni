@@ -1,0 +1,39 @@
+# Örnek: Off-site S3 backup — günlük 03:30'da yedeği S3'e sync eder
+# Kullanım: değerleri doldur, sonra `.example` uzantısını sil
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: ahost-backup-s3
+  namespace: ahost
+spec:
+  schedule: "30 3 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: sync
+            image: amazon/aws-cli:2
+            command:
+            - sh
+            - -c
+            - |
+              cd /backups
+              aws s3 sync . s3://YOUR_BUCKET/ahost-backups/ \
+                --storage-class GLACIER_IR \
+                --delete
+            env:
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom: {secretKeyRef: {name: aws-backup, key: access_key}}
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom: {secretKeyRef: {name: aws-backup, key: secret_key}}
+            - name: AWS_DEFAULT_REGION
+              value: eu-central-1
+            volumeMounts:
+            - name: backups
+              mountPath: /backups
+              readOnly: true
+          volumes:
+          - name: backups
+            persistentVolumeClaim: {claimName: ahost-backups}

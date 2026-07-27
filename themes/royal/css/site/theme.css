@@ -1,0 +1,25 @@
+/* ROYAL / SITE — tokens */
+[data-theme-skin="royal"] {
+    --aho-color-primary-50:  #eff6ff;
+    --aho-color-primary-100: #dbeafe;
+    --aho-color-primary-200: #bfdbfe;
+    --aho-color-primary-300: #93c5fd;
+    --aho-color-primary-400: #60a5fa;
+    --aho-color-primary-500: #3b82f6;
+    --aho-color-primary-600: #2563eb;
+    --aho-color-primary-700: #1d4ed8;
+    --aho-color-primary-800: #1e40af;
+    --aho-color-primary-900: #1e3a8a;
+    --aho-color-accent-400: #fbbf24;
+    --aho-color-accent-500: #f59e0b;
+    --aho-color-accent-600: #d97706;
+    --aho-color-bg-soft:  #f8fafc;
+    --aho-font-sans: 'Inter', system-ui, sans-serif;
+    --aho-font-serif: 'Playfair Display', Georgia, serif;
+    --aho-radius-sm: 4px; --aho-radius-md: 6px; --aho-radius-lg: 10px;
+    --aho-radius-xl: 14px; --aho-radius-2xl: 20px;
+    --aho-shadow-glow: 0 0 0 4px rgba(245, 158, 11, .22);
+}
+[data-theme-skin="royal"][data-theme="dark"] {
+    --aho-color-bg: #0a0f1f; --aho-color-bg-soft: #111827; --aho-color-bg-muted: #1f2937; --aho-color-border: #374151;
+}

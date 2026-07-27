@@ -1,0 +1,27 @@
+/* EMERALD / SITE — tokens */
+[data-theme-skin="emerald"] {
+    --aho-color-primary-50:  #ecfdf5;
+    --aho-color-primary-100: #d1fae5;
+    --aho-color-primary-200: #a7f3d0;
+    --aho-color-primary-300: #6ee7b7;
+    --aho-color-primary-400: #34d399;
+    --aho-color-primary-500: #10b981;
+    --aho-color-primary-600: #059669;
+    --aho-color-primary-700: #047857;
+    --aho-color-primary-800: #065f46;
+    --aho-color-primary-900: #064e3b;
+    --aho-color-accent-400: #4ade80;
+    --aho-color-accent-500: #22c55e;
+    --aho-color-accent-600: #16a34a;
+    --aho-color-bg-soft:  #f0fdf4;
+    --aho-color-bg-muted: #ecfdf5;
+    --aho-color-border:   #d1fae5;
+    --aho-font-sans: 'Manrope', 'Inter', system-ui, sans-serif;
+    --aho-radius-sm: 10px; --aho-radius-md: 16px; --aho-radius-lg: 24px;
+    --aho-radius-xl: 32px; --aho-radius-2xl: 40px;
+    --aho-shadow-glow: 0 0 0 4px rgba(16, 185, 129, .18);
+}
+[data-theme-skin="emerald"][data-theme="dark"] {
+    --aho-color-bg: #041f1a; --aho-color-bg-soft: #05261f; --aho-color-bg-muted: #073b2f; --aho-color-border: #0e5140;
+    --aho-color-ink-900: #ecfdf5; --aho-color-ink-800: #d1fae5; --aho-color-ink-700: #a7f3d0; --aho-color-ink-500: #6ee7b7;
+}

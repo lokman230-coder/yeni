@@ -1,0 +1,12 @@
+/* ROYAL / SITE — kartlar */
+[data-theme-skin="royal"] .aho-card {
+    border-color: var(--aho-color-primary-100);
+    box-shadow: 0 2px 8px rgba(30, 58, 138, .06);
+}
+[data-theme-skin="royal"] .aho-card--hover:hover {
+    border-color: var(--aho-color-accent-500);
+    box-shadow: 0 12px 32px rgba(30, 58, 138, .18);
+}
+[data-theme-skin="royal"] .aho-feature-card__icon {
+    background: linear-gradient(135deg, var(--aho-color-primary-900), var(--aho-color-accent-500));
+}

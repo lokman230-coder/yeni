@@ -1,0 +1,15 @@
+/* MIDNIGHT / ADMIN — sidebar */
+[data-theme-skin="midnight"] .aho-admin-sidebar {
+    background: linear-gradient(180deg, #0a0616, #1a1035);
+    border-right: 1px solid rgba(168, 85, 247, .18);
+}
+[data-theme-skin="midnight"] .aho-admin-sidebar__brand b { color: var(--aho-color-accent-400); }
+[data-theme-skin="midnight"] .aho-admin-sidebar__link { color: var(--aho-color-primary-200); }
+[data-theme-skin="midnight"] .aho-admin-sidebar__link:hover {
+    background: rgba(217, 70, 239, .12); color: #fff;
+}
+[data-theme-skin="midnight"] .aho-admin-sidebar__link.is-active {
+    background: linear-gradient(135deg, var(--aho-color-primary-600), var(--aho-color-accent-500));
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(217, 70, 239, .35);
+}

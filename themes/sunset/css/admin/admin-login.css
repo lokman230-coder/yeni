@@ -1,0 +1,7 @@
+/* SUNSET / ADMIN — admin login */
+[data-theme-skin="sunset"] .aho-admin-login {
+    background:
+        radial-gradient(ellipse at top left, rgba(249, 115, 22, .20), transparent 55%),
+        radial-gradient(ellipse at bottom right, rgba(244, 63, 94, .15), transparent 55%),
+        var(--aho-color-bg-soft);
+}

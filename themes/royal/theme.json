@@ -1,0 +1,11 @@
+{
+    "name": "Royal",
+    "slug": "royal",
+    "description": "Lacivert-altın kurumsal lüks. Serif başlıklar, keskin köşeler, prestijli.",
+    "author": "Ahost Bilişim Core",
+    "version": "1.0.0",
+    "colors": { "primary": "#1e3a8a", "accent": "#f59e0b", "background": "#fefefe" },
+    "font": "Playfair Display",
+    "supports_dark": true,
+    "is_premium": true
+}

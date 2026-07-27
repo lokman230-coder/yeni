@@ -1,0 +1,17 @@
+/* SUNSET / SITE — ana sayfa */
+[data-theme-skin="sunset"] .aho-home-hero {
+    background:
+        radial-gradient(ellipse at top left, rgba(249, 115, 22, .18), transparent 55%),
+        radial-gradient(ellipse at bottom right, rgba(244, 63, 94, .12), transparent 55%),
+        var(--aho-color-bg);
+}
+[data-theme-skin="sunset"] .aho-home-hero__gradient {
+    background: linear-gradient(135deg, var(--aho-color-primary-600), #f43f5e, #ec4899);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+[data-theme-skin="sunset"] .aho-home-hero__badge {
+    background: var(--aho-color-primary-100); color: var(--aho-color-primary-800); border-color: var(--aho-color-primary-200);
+}
+[data-theme-skin="sunset"] .aho-home-cta__box {
+    background: linear-gradient(135deg, var(--aho-color-primary-700), #f43f5e, #ec4899);
+}

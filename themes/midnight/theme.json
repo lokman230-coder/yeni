@@ -1,0 +1,12 @@
+{
+    "name": "Midnight",
+    "slug": "midnight",
+    "description": "Mor-menekşe glassmorphism. Yaratıcı ajanslar, dark-first premium.",
+    "author": "Ahost Bilişim Core",
+    "version": "1.0.0",
+    "colors": { "primary": "#7c3aed", "accent": "#d946ef", "background": "#0f0a1e" },
+    "font": "Space Grotesk",
+    "supports_dark": true,
+    "prefers_dark": true,
+    "is_premium": false
+}

@@ -1,0 +1,12 @@
+/* MIDNIGHT / SITE — checkout */
+[data-theme-skin="midnight"] .aho-checkout-step { background: rgba(168, 85, 247, .1); color: var(--aho-color-ink-600); }
+[data-theme-skin="midnight"] .aho-checkout-step.is-active {
+    background: linear-gradient(135deg, var(--aho-color-primary-600), var(--aho-color-accent-500));
+    color: #fff;
+}
+[data-theme-skin="midnight"] .aho-payment-method {
+    background: rgba(168, 85, 247, .04); border-color: rgba(168, 85, 247, .2);
+}
+[data-theme-skin="midnight"] .aho-payment-method.is-selected {
+    border-color: var(--aho-color-accent-500); background: rgba(217, 70, 239, .1);
+}

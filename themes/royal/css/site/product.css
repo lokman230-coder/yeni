@@ -1,0 +1,14 @@
+/* ROYAL / SITE — ürün planları */
+[data-theme-skin="royal"] .aho-plan-card.is-popular {
+    border-color: var(--aho-color-accent-500);
+    border-width: 2px;
+}
+[data-theme-skin="royal"] .aho-plan-card__badge {
+    background: var(--aho-color-accent-500);
+    color: var(--aho-color-primary-900);
+    font-weight: 700;
+}
+[data-theme-skin="royal"] .aho-plan-card__amount {
+    color: var(--aho-color-primary-900);
+    font-family: var(--aho-font-serif);
+}

@@ -1,0 +1,15 @@
+/* MIDNIGHT / SITE — form input */
+[data-theme-skin="midnight"] .aho-form-input,
+[data-theme-skin="midnight"] .aho-form-select,
+[data-theme-skin="midnight"] .aho-form-textarea {
+    background: rgba(26, 16, 53, .6);
+    border-color: var(--aho-color-border);
+    color: var(--aho-color-ink-900);
+}
+[data-theme-skin="midnight"] .aho-form-input::placeholder,
+[data-theme-skin="midnight"] .aho-form-textarea::placeholder { color: var(--aho-color-ink-500); }
+[data-theme-skin="midnight"] .aho-form-input:focus,
+[data-theme-skin="midnight"] .aho-form-textarea:focus {
+    border-color: var(--aho-color-accent-500);
+    box-shadow: 0 0 0 4px rgba(217, 70, 239, .22);
+}

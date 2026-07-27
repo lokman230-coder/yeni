@@ -1,0 +1,2 @@
+/* MIDNIGHT / ADMIN — tokens override + body */
+[data-theme-skin="midnight"] body.aho-admin { background: var(--aho-color-bg); color: var(--aho-color-ink-800); }

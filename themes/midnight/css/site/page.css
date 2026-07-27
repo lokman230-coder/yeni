@@ -1,0 +1,12 @@
+/* MIDNIGHT / SITE — statik sayfalar */
+[data-theme-skin="midnight"] .aho-pages-hero {
+    background: radial-gradient(ellipse at top, rgba(168, 85, 247, .18), transparent 60%), var(--aho-color-bg);
+}
+[data-theme-skin="midnight"] .aho-pages-hero h1 {
+    background: linear-gradient(135deg, var(--aho-color-primary-400), var(--aho-color-accent-500));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+[data-theme-skin="midnight"] .aho-prose { color: var(--aho-color-ink-700); }
+[data-theme-skin="midnight"] .aho-prose h2,
+[data-theme-skin="midnight"] .aho-prose h3 { color: var(--aho-color-ink-900); }
+[data-theme-skin="midnight"] .aho-prose a { color: var(--aho-color-accent-400); }

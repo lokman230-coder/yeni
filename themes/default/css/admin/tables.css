@@ -1,0 +1,53 @@
+/* DEFAULT / ADMIN — admin tabloları (Faz 3+'da müşteri/sipariş listeleri için) */
+
+.aho-admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--aho-color-bg);
+    border-radius: var(--aho-radius-md);
+    overflow: hidden;
+}
+.aho-admin-table th,
+.aho-admin-table td {
+    padding: var(--aho-space-3) var(--aho-space-4);
+    text-align: left;
+    border-bottom: 1px solid var(--aho-color-border);
+    font-size: var(--aho-text-sm);
+}
+.aho-admin-table th {
+    background: var(--aho-color-bg-muted);
+    color: var(--aho-color-ink-600);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: var(--aho-text-xs);
+    letter-spacing: 0.5px;
+}
+.aho-admin-table tr:hover td { background: var(--aho-color-bg-soft); }
+.aho-admin-table tr:last-child td { border-bottom: 0; }
+
+/* Sayfalama */
+.aho-pagination {
+    display: flex;
+    gap: var(--aho-space-1);
+    justify-content: center;
+    margin-top: var(--aho-space-4);
+}
+.aho-pagination a,
+.aho-pagination span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 var(--aho-space-3);
+    border-radius: var(--aho-radius-sm);
+    background: var(--aho-color-bg-muted);
+    color: var(--aho-color-ink-700);
+    font-size: var(--aho-text-sm);
+    text-decoration: none;
+}
+.aho-pagination a:hover { background: var(--aho-color-primary-100); color: var(--aho-color-primary-800); }
+.aho-pagination .is-active {
+    background: var(--aho-color-primary-600);
+    color: #fff;
+}

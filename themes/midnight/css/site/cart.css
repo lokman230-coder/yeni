@@ -1,0 +1,9 @@
+/* MIDNIGHT / SITE — sepet */
+[data-theme-skin="midnight"] .aho-cart-summary { background: rgba(168, 85, 247, .06); }
+[data-theme-skin="midnight"] .aho-cart-item {
+    background: rgba(26, 16, 53, .5); border-color: rgba(168, 85, 247, .2);
+}
+[data-theme-skin="midnight"] .aho-cart-item__price {
+    background: linear-gradient(135deg, var(--aho-color-primary-400), var(--aho-color-accent-400));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+}

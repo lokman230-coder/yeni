@@ -1,0 +1,7 @@
+/* ROYAL / SITE — header */
+[data-theme-skin="royal"] .aho-topbar {
+    background: var(--aho-color-primary-900);
+    border-bottom: 2px solid var(--aho-color-accent-500);
+}
+[data-theme-skin="royal"] .aho-hdr { border-bottom: 1px solid var(--aho-color-border); }
+[data-theme-skin="royal"] .aho-hdr__brand b { color: var(--aho-color-accent-500); }
