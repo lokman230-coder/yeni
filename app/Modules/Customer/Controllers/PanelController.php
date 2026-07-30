@@ -31,9 +31,10 @@ final class PanelController
     {
         $customer = AuthService::customer();
         $rows = Connection::select(
-            "SELECT ha.*, p.name AS product_name
+            "SELECT ha.*, p.name AS product_name, s.hostname AS server_hostname, s.panel AS server_panel
              FROM hosting_accounts ha
              LEFT JOIN products p ON p.id = ha.product_id
+             LEFT JOIN hosting_servers s ON s.id = ha.server_id
              WHERE ha.customer_id = ?
              ORDER BY ha.created_at DESC",
             [$customer['id']]
@@ -314,8 +315,8 @@ final class PanelController
         $customer = AuthService::customer();
         $id = (int) $request->param('id');
         $domain = Connection::selectOne(
-            "SELECT d.*, r.label AS registrar_name FROM domains d
-             LEFT JOIN registrars r ON r.id = d.registrar_id
+            "SELECT d.*, r.name AS registrar_name FROM domains d
+             LEFT JOIN domain_registrars r ON r.id = d.registrar_id
              WHERE d.id = ? AND d.customer_id = ?",
             [$id, $customer['id']]
         );

@@ -8,7 +8,7 @@ $success = flash('success');
 $isEdit = $product !== null;
 $actionUrl = $isEdit ? '/admin/urun-merkezi/' . (int)$product['id'] . '/guncelle' : '/admin/urun-merkezi/kaydet';
 $existingPrices = $prices ?? [];
-$serverGroups = $serverGroups ?? [];
+$servers = $servers ?? [];
 ?>
 <div class="aho-admin-page">
     <div class="aho-admin-page__header">
@@ -165,16 +165,16 @@ $serverGroups = $serverGroups ?? [];
                     </select>
                 </div>
                 <div class="aho-form-group">
-                    <label class="aho-form-label">Sunucu Grubu</label>
-                    <select name="server_group_id" class="aho-form-select">
-                        <option value="">— Otomatik / tüm sunucular —</option>
-                        <?php foreach ($serverGroups as $sg): ?>
-                            <option value="<?= (int)$sg['id'] ?>" <?= (int)($product['server_group_id'] ?? 0) === (int)$sg['id'] ? 'selected' : '' ?>>
-                                <?= e($sg['name']) ?><?= !empty($sg['slug']) ? ' (' . e($sg['slug']) . ')' : '' ?>
+                    <label class="aho-form-label">Sunucu</label>
+                    <select name="server_id" class="aho-form-select">
+                        <option value="">— Otomatik / en az yüklü sunucu —</option>
+                        <?php foreach ($servers as $sv): ?>
+                            <option value="<?= (int)$sv['id'] ?>" <?= (int)($product['server_id'] ?? 0) === (int)$sv['id'] ? 'selected' : '' ?> <?= empty($sv['is_active']) ? 'disabled' : '' ?>>
+                                <?= e($sv['name']) ?><?= !empty($sv['hostname']) ? ' (' . e($sv['hostname']) . ')' : '' ?><?= empty($sv['is_active']) ? ' — pasif' : '' ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
-                    <small class="aho-form-help">Kurulumda en uygun aktif sunucu bu gruptan seçilir.</small>
+                    <small class="aho-form-help">Kurulumda hesap doğrudan bu sunucuda açılır.</small>
                 </div>
                 <div class="aho-form-group">
                     <label class="aho-form-label">Stok Tipi</label>

@@ -48,6 +48,59 @@ final class InvoiceService
         return $invoiceId;
     }
 
+    /**
+     * Siparişe bağlı olmayan manuel fatura oluşturur (Teklif kabulü / Faturalandırılabilir Ürünler).
+     * @param array<int,array{description:string,quantity:int,unit_price:float,tax_rate:float}> $items
+     */
+    public static function createManual(int $customerId, array $items, string $currency = 'TRY', ?string $notes = null): int
+    {
+        $subtotal = 0.0;
+        $taxTotal = 0.0;
+        foreach ($items as $it) {
+            $lineTotal = (float) $it['unit_price'] * (int) $it['quantity'];
+            $subtotal += $lineTotal;
+            $taxTotal += $lineTotal * ((float) ($it['tax_rate'] ?? 0) / 100);
+        }
+        $total = $subtotal + $taxTotal;
+
+        $number = self::generateNumber();
+        $today = date('Y-m-d');
+        $due = date('Y-m-d', strtotime('+7 days'));
+
+        $invoiceId = Connection::insert('invoices', [
+            'invoice_number' => $number,
+            'order_id'       => null,
+            'customer_id'    => $customerId,
+            'status'         => 'unpaid',
+            'issue_date'     => $today,
+            'due_date'       => $due,
+            'subtotal'       => $subtotal,
+            'discount_total' => 0,
+            'tax_total'      => $taxTotal,
+            'total'          => $total,
+            'balance'        => $total,
+            'currency'       => $currency,
+            'notes'          => $notes,
+            'created_at'     => date('Y-m-d H:i:s'),
+            'updated_at'     => date('Y-m-d H:i:s'),
+        ]);
+
+        foreach ($items as $i => $it) {
+            $lineTotal = (float) $it['unit_price'] * (int) $it['quantity'];
+            Connection::insert('invoice_items', [
+                'invoice_id'  => $invoiceId,
+                'description' => (string) $it['description'],
+                'quantity'    => (int) $it['quantity'],
+                'unit_price'  => (float) $it['unit_price'],
+                'tax_rate'    => (float) ($it['tax_rate'] ?? 0),
+                'line_total'  => $lineTotal,
+                'sort_order'  => $i,
+            ]);
+        }
+
+        return $invoiceId;
+    }
+
     public static function markPaid(int $orderId, float $amount): void
     {
         $invoice = Connection::selectOne("SELECT * FROM invoices WHERE order_id = ?", [$orderId]);

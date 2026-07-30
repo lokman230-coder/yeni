@@ -41,10 +41,19 @@ if ($service['server_hostname'] && $service['server_panel']) {
                         </h1>
                         <p style="color:var(--aho-color-ink-600);margin:0"><?= e($service['product_name'] ?? $service['package']) ?></p>
                     </div>
-                    <?php if ($panelUrl && $service['status'] === 'active'): ?>
-                        <a href="<?= e($panelUrl) ?>" target="_blank" class="aho-btn aho-btn--primary">
-                            🔗 Kontrol Paneli
-                        </a>
+                    <?php if (($panelUrl && $service['status'] === 'active') || (!empty($service['username']) && $service['server_hostname'])): ?>
+                        <div style="display:flex;gap:8px">
+                            <?php if ($panelUrl && $service['status'] === 'active'): ?>
+                                <a href="<?= e($panelUrl) ?>" target="_blank" class="aho-btn aho-btn--primary">
+                                    🔗 Kontrol Paneli
+                                </a>
+                            <?php endif; ?>
+                            <?php if (!empty($service['username']) && $service['server_hostname']): ?>
+                                <a href="ftp://<?= e(rawurlencode($service['username'])) ?>@<?= e($service['server_hostname']) ?>" class="aho-btn aho-btn--outline">
+                                    📁 FTP ile Bağlan
+                                </a>
+                            <?php endif; ?>
+                        </div>
                     <?php endif; ?>
                 </div>
 
@@ -73,6 +82,9 @@ if ($service['server_hostname'] && $service['server_panel']) {
                     </div>
                     <p style="margin:12px 0 0;font-size:12px;color:#0c4a6e">
                         💡 Şifreyi ilk defa göreceksin — güvenli bir yere kaydet. Değiştirmek için destek talebi oluştur.
+                    </p>
+                    <p style="margin:6px 0 0;font-size:12px;color:#0c4a6e">
+                        📁 Bu kullanıcı adı/şifre aynı zamanda FTP giriş bilgindir.
                     </p>
                 </div>
                 <script>

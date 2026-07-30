@@ -123,6 +123,10 @@ $router->group(['prefix' => 'admin', 'middleware' => ['locale', 'admin.auth']], 
 
     // ---- Müşteriler CRUD + Impersonate (Rapor 5.4) ----
     $router->get('/musteriler',                        [\App\Modules\Admin\Controllers\AdminCustomerController::class, 'index'])->name('admin.customers.index');
+    $router->get('/hosting-hesaplari',                  [\App\Modules\Admin\Controllers\AdminHostingAccountController::class, 'index'])->name('admin.hosting_accounts.index');
+    $router->post('/hosting-hesaplari/toplu-ata',       [\App\Modules\Admin\Controllers\AdminHostingAccountController::class, 'bulkAssign'])->middleware(['csrf']);
+    $router->get('/hosting-hesaplari/{id}/duzenle',     [\App\Modules\Admin\Controllers\AdminHostingAccountController::class, 'edit']);
+    $router->post('/hosting-hesaplari/{id}/guncelle',   [\App\Modules\Admin\Controllers\AdminHostingAccountController::class, 'update'])->middleware(['csrf']);
     $router->get('/musteriler/yeni',                   [\App\Modules\Admin\Controllers\AdminCustomerController::class, 'create']);
     $router->post('/musteriler/kaydet',                [\App\Modules\Admin\Controllers\AdminCustomerController::class, 'store'])->middleware(['csrf']);
     $router->get('/musteriler/{id}',                   [\App\Modules\Admin\Controllers\AdminCustomerController::class, 'show'])->name('admin.customers.show');
@@ -133,6 +137,35 @@ $router->group(['prefix' => 'admin', 'middleware' => ['locale', 'admin.auth']], 
     $router->post('/musteriler/{id}/adina-giris',      [\App\Modules\Admin\Controllers\AdminCustomerController::class, 'impersonate'])->middleware(['csrf']);
     $router->post('/musteriler/{id}/bakiye-ekle',      [\App\Modules\Admin\Controllers\AdminCustomerController::class, 'addCredit'])->middleware(['csrf']);
     $router->post('/musteriler/{id}/hosting/{hostingId}/sifre-goster', [\App\Modules\Admin\Controllers\AdminCustomerController::class, 'revealHostingPassword'])->middleware(['csrf']);
+    $router->post('/musteriler/{id}/hosting/{hostingId}/askiya-al',    [\App\Modules\Admin\Controllers\AdminCustomerController::class, 'hostingSuspend'])->middleware(['csrf']);
+    $router->post('/musteriler/{id}/hosting/{hostingId}/aktif-et',     [\App\Modules\Admin\Controllers\AdminCustomerController::class, 'hostingUnsuspend'])->middleware(['csrf']);
+    $router->post('/musteriler/{id}/hosting/{hostingId}/sifre-sifirla',[\App\Modules\Admin\Controllers\AdminCustomerController::class, 'hostingResetPassword'])->middleware(['csrf']);
+    $router->post('/musteriler/{id}/alan-adlarini-senkronize-et',      [\App\Modules\Admin\Controllers\AdminCustomerController::class, 'syncDomainsFromHosting'])->middleware(['csrf']);
+
+    // Notlar
+    $router->post('/musteriler/{id}/not-ekle',              [\App\Modules\Admin\Controllers\AdminCustomerController::class, 'storeNote'])->middleware(['csrf']);
+    $router->post('/musteriler/{id}/not/{noteId}/sil',       [\App\Modules\Admin\Controllers\AdminCustomerController::class, 'deleteNote'])->middleware(['csrf']);
+
+    // Kullanıcılar (alt kişiler)
+    $router->post('/musteriler/{id}/kullanici-ekle',                    [\App\Modules\Admin\Controllers\AdminCustomerController::class, 'storeContact'])->middleware(['csrf']);
+    $router->post('/musteriler/{id}/kullanici/{contactId}/guncelle',    [\App\Modules\Admin\Controllers\AdminCustomerController::class, 'updateContact'])->middleware(['csrf']);
+    $router->post('/musteriler/{id}/kullanici/{contactId}/sil',         [\App\Modules\Admin\Controllers\AdminCustomerController::class, 'deleteContact'])->middleware(['csrf']);
+
+    // Faturalandırılabilir Ürünler
+    $router->post('/musteriler/{id}/faturalandirilabilir-ekle',         [\App\Modules\Admin\Controllers\AdminCustomerController::class, 'storeBillableItem'])->middleware(['csrf']);
+    $router->post('/musteriler/{id}/faturalandirilabilir/{itemId}/sil', [\App\Modules\Admin\Controllers\AdminCustomerController::class, 'deleteBillableItem'])->middleware(['csrf']);
+    $router->post('/musteriler/{id}/faturalandirilabilir/faturaya-cevir', [\App\Modules\Admin\Controllers\AdminCustomerController::class, 'convertBillableItems'])->middleware(['csrf']);
+
+    // Teklifler
+    $router->get('/musteriler/{id}/teklif-olustur',    [\App\Modules\Admin\Controllers\AdminQuoteController::class, 'create']);
+    $router->post('/musteriler/{id}/teklif-kaydet',    [\App\Modules\Admin\Controllers\AdminQuoteController::class, 'store'])->middleware(['csrf']);
+    $router->get('/teklifler/{quoteId}',               [\App\Modules\Admin\Controllers\AdminQuoteController::class, 'show'])->name('admin.quotes.show');
+    $router->get('/teklifler/{quoteId}/duzenle',       [\App\Modules\Admin\Controllers\AdminQuoteController::class, 'edit']);
+    $router->post('/teklifler/{quoteId}/guncelle',     [\App\Modules\Admin\Controllers\AdminQuoteController::class, 'update'])->middleware(['csrf']);
+    $router->post('/teklifler/{quoteId}/gonder',       [\App\Modules\Admin\Controllers\AdminQuoteController::class, 'send'])->middleware(['csrf']);
+    $router->post('/teklifler/{quoteId}/kabul',        [\App\Modules\Admin\Controllers\AdminQuoteController::class, 'accept'])->middleware(['csrf']);
+    $router->post('/teklifler/{quoteId}/reddet',       [\App\Modules\Admin\Controllers\AdminQuoteController::class, 'decline'])->middleware(['csrf']);
+    $router->post('/teklifler/{quoteId}/sil',          [\App\Modules\Admin\Controllers\AdminQuoteController::class, 'destroy'])->middleware(['csrf']);
 
     // Siparişler CRUD
     $router->get('/siparisler',                        [\App\Modules\Admin\Controllers\AdminOrderController::class, 'index'])->name('admin.orders.index');

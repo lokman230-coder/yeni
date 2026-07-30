@@ -72,7 +72,20 @@ $view->section('content');
                                         </span>
                                     </td>
                                     <td style="padding:12px 16px;text-align:right">
-                                        <a href="/panel/hizmet/<?= (int)$s['id'] ?>" style="color:var(--aho-color-primary-600);text-decoration:none;font-size:13px;font-weight:600">Detay →</a>
+                                        <?php
+                                        $panelPort = match ($s['server_panel'] ?? null) { 'cpanel' => 2083, 'da' => 2222, 'plesk' => 8443, default => null };
+                                        $panelUrl = ($s['server_hostname'] && $panelPort && $s['status'] === 'active') ? 'https://' . $s['server_hostname'] . ':' . $panelPort : null;
+                                        $ftpUrl = ($s['server_hostname'] && !empty($s['username'])) ? 'ftp://' . rawurlencode((string)$s['username']) . '@' . $s['server_hostname'] : null;
+                                        ?>
+                                        <div style="display:flex;gap:6px;justify-content:flex-end;align-items:center">
+                                            <?php if ($panelUrl): ?>
+                                                <a href="<?= e($panelUrl) ?>" target="_blank" class="aho-btn aho-btn--sm aho-btn--primary" title="Kontrol Paneline Git">🔗 Panel</a>
+                                            <?php endif; ?>
+                                            <?php if ($ftpUrl): ?>
+                                                <a href="<?= e($ftpUrl) ?>" class="aho-btn aho-btn--sm aho-btn--outline" title="FTP ile Bağlan">📁 FTP</a>
+                                            <?php endif; ?>
+                                            <a href="/panel/hizmet/<?= (int)$s['id'] ?>" style="color:var(--aho-color-primary-600);text-decoration:none;font-size:13px;font-weight:600">Detay →</a>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

@@ -49,7 +49,7 @@ final class AdminProductController
             'prices'  => [],
             'currencies' => CurrencyService::supported(),
             'periods' => PricingService::allPeriods(),
-            'serverGroups' => $this->serverGroups(),
+            'servers' => $this->servers(),
         ]));
     }
 
@@ -72,7 +72,7 @@ final class AdminProductController
             'customFields' => ProductRepository::customFields($id, false),
             'currencies' => CurrencyService::supported(),
             'periods' => PricingService::allPeriods(),
-            'serverGroups' => $this->serverGroups(),
+            'servers' => $this->servers(),
         ]));
     }
 
@@ -145,7 +145,7 @@ final class AdminProductController
             'setup_fee'         => (float) $request->input('setup_fee', 0),
             'setup_fee_currency'=> strtoupper((string) $request->input('setup_fee_currency', 'TRY')),
             'automation_module' => (string) $request->input('automation_module', ''),
-            'server_group_id'   => (int) $request->input('server_group_id', 0) ?: null,
+            'server_id'         => (int) $request->input('server_id', 0) ?: null,
             'seo_title'         => (string) $request->input('seo_title', ''),
             'seo_description'   => (string) $request->input('seo_description', ''),
             'sort_order'        => (int) $request->input('sort_order', 0),
@@ -167,48 +167,14 @@ final class AdminProductController
         ProductRepository::replacePrices($productId, $prices);
     }
 
-    private function serverGroups(): array
+    private function servers(): array
     {
         try {
-            Connection::pdo()->exec(
-                "CREATE TABLE IF NOT EXISTS `server_groups` (
-                    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-                    `name` VARCHAR(120) NOT NULL,
-                    `slug` VARCHAR(120) NOT NULL,
-                    `fill_type` ENUM('fill_first','round_robin','least_used') NOT NULL DEFAULT 'least_used',
-                    `created_at` DATETIME NULL,
-                    `updated_at` DATETIME NULL,
-                    PRIMARY KEY (`id`),
-                    UNIQUE KEY `server_groups_slug_unique` (`slug`)
-                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
-            );
-
-            $groups = Connection::select("SELECT id, name, slug, fill_type FROM server_groups ORDER BY name ASC");
-            if ($groups) {
-                return $groups;
-            }
-
-            $serverGroups = Connection::select(
-                "SELECT DISTINCT server_group
+            return Connection::select(
+                "SELECT id, name, hostname, panel, is_active
                  FROM hosting_servers
-                 WHERE server_group IS NOT NULL AND server_group != ''
-                 ORDER BY server_group ASC"
+                 ORDER BY is_active DESC, name ASC"
             );
-            foreach ($serverGroups as $row) {
-                $slug = trim((string) ($row['server_group'] ?? ''));
-                if ($slug === '') {
-                    continue;
-                }
-                Connection::insert('server_groups', [
-                    'name' => ucwords(str_replace(['-', '_'], ' ', $slug)),
-                    'slug' => $slug,
-                    'fill_type' => 'least_used',
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s'),
-                ]);
-            }
-
-            return Connection::select("SELECT id, name, slug, fill_type FROM server_groups ORDER BY name ASC");
         } catch (\Throwable) {
             return [];
         }

@@ -21,8 +21,8 @@ use App\Support\Encrypter;
  *   3. Hesap açıldıktan sonra hosting_accounts.status='active', order_items.status='active'
  *   4. Herhangi bir adım fail → status='pending', notes'a hata, admin bildirimi
  *
- * Server seçimi: products.server_group_id → hosting_servers WHERE server_group=... AND max_accounts > current_accounts
- * → en az yüklü sunucu (least-loaded)
+ * Server seçimi: products.server_id doluysa hesap doğrudan o sunucuda açılır (uygun değilse manuel kuyruğa düşer).
+ * Boşsa (Otomatik seçildiyse) tüm aktif sunucular arasından en az yüklü olan seçilir.
  */
 final class ProvisionService
 {
@@ -87,7 +87,7 @@ final class ProvisionService
         if ($existing) return ['ok' => true, 'note' => "Hesap zaten mevcut (id={$existing['id']})"];
 
         // 2) Server seç
-        $server = self::pickServer((int) ($product['server_group_id'] ?? 0));
+        $server = self::pickServer((int) ($product['server_id'] ?? 0));
         if (!$server) {
             // Manuel akış — kayıt aç, admin bakar
             $accountId = Connection::insert('hosting_accounts', [
@@ -219,21 +219,24 @@ final class ProvisionService
         return ['ok' => true, 'note' => "VPS bekleyen (id=$accountId)"];
     }
 
-    /** En az yüklü aktif sunucuyu seç. */
-    private static function pickServer(int $groupId): ?array
+    /**
+     * Ürüne belirli bir sunucu atanmışsa (server_id) hesap doğrudan o sunucuda açılır.
+     * Sunucu dolu/pasif ise null döner ve provisioning manuel kuyruğa düşer (başka sunucuya kaymaz).
+     * Ürüne sunucu atanmamışsa (server_id boş = "Otomatik"), en az yüklü aktif sunucu seçilir.
+     */
+    private static function pickServer(int $serverId): ?array
     {
         try {
-            if ($groupId > 0) {
-                $row = Connection::selectOne(
+            if ($serverId > 0) {
+                return Connection::selectOne(
                     "SELECT * FROM hosting_servers
-                     WHERE is_active = 1
-                       AND (server_group = (SELECT slug FROM server_groups WHERE id = ?) OR server_group IS NULL)
+                     WHERE id = ?
+                       AND is_active = 1
                        AND (max_accounts IS NULL OR current_accounts < max_accounts)
                        AND panel != 'manual'
-                     ORDER BY current_accounts ASC LIMIT 1",
-                    [$groupId]
+                     LIMIT 1",
+                    [$serverId]
                 );
-                if ($row) return $row;
             }
             return Connection::selectOne(
                 "SELECT * FROM hosting_servers
