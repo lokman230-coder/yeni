@@ -1,0 +1,51 @@
+/* DEFAULT / SITE — ödeme akışı */
+
+.aho-checkout { padding-block: var(--aho-space-8) var(--aho-space-16); }
+.aho-checkout-steps {
+    display: flex;
+    justify-content: center;
+    gap: var(--aho-space-4);
+    margin-bottom: var(--aho-space-8);
+    flex-wrap: wrap;
+}
+.aho-checkout-step {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--aho-space-2);
+    padding: var(--aho-space-2) var(--aho-space-4);
+    background: var(--aho-color-bg-muted);
+    border-radius: var(--aho-radius-full);
+    font-size: var(--aho-text-sm);
+    color: var(--aho-color-ink-600);
+}
+.aho-checkout-step.is-active {
+    background: var(--aho-color-primary-600);
+    color: #fff;
+}
+.aho-checkout-step.is-done {
+    background: var(--aho-color-success);
+    color: #fff;
+}
+.aho-payment-methods {
+    display: grid; gap: var(--aho-space-3);
+    grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .aho-payment-methods { grid-template-columns: repeat(2, 1fr); } }
+.aho-payment-method {
+    padding: var(--aho-space-4);
+    border: 2px solid var(--aho-color-border);
+    border-radius: var(--aho-radius-md);
+    cursor: pointer;
+    transition: all var(--aho-motion-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--aho-space-3);
+}
+.aho-payment-method:hover {
+    border-color: var(--aho-color-primary-400);
+    background: var(--aho-color-primary-50);
+}
+.aho-payment-method.is-selected {
+    border-color: var(--aho-color-accent-500);
+    background: var(--aho-color-primary-50);
+}

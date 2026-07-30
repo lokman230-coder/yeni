@@ -1,0 +1,272 @@
+/* Web design, Site Builder, Mobile Builder and mobile app public pages. */
+body.theme-ahost-prism[data-app="site"] .ao-service-landing-page {
+  padding: clamp(14px, 2vw, 26px) 0 clamp(34px, 4vw, 58px) !important;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-service-landing-page .ao-content-shell {
+  width: min(100% - 40px, 1180px) !important;
+  max-width: 1180px !important;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-service-landing-page .ao-content-hero {
+  min-height: 0 !important;
+  padding: clamp(18px, 2.2vw, 28px) !important;
+  border-radius: 24px !important;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-service-landing-page .ao-content-hero h1 {
+  max-width: 850px !important;
+  font-size: clamp(28px, 2.65vw, 40px) !important;
+  line-height: 1.08 !important;
+  font-weight: 640 !important;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-service-landing-page .ao-content-hero p {
+  max-width: 720px !important;
+  font-size: 14px !important;
+  line-height: 1.56 !important;
+  font-weight: 420 !important;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-web-service-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 16px !important;
+  margin-top: 22px !important;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-web-service-card {
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: 46px minmax(0, 1fr) auto !important;
+  gap: 14px !important;
+  align-items: center !important;
+  padding: clamp(14px, 1.7vw, 19px) !important;
+  border: 1px solid rgba(240, 215, 202, .9) !important;
+  border-radius: 20px !important;
+  background:
+    radial-gradient(circle at 5% 10%, rgba(255, 103, 93, .06), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, .95), rgba(255, 250, 245, .78)) !important;
+  box-shadow: 0 16px 42px rgba(15, 23, 42, .055) !important;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-content-list-icon {
+  width: 42px !important;
+  height: 42px !important;
+  display: grid !important;
+  place-items: center !important;
+  border-radius: 14px !important;
+  background: linear-gradient(135deg, rgba(37, 99, 235, .1), rgba(33, 190, 213, .14)) !important;
+  font-size: 18px !important;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-web-service-copy h3 {
+  margin: 0 0 6px !important;
+  color: #082f49 !important;
+  font-size: clamp(17px, 1.35vw, 21px) !important;
+  line-height: 1.16 !important;
+  font-weight: 650 !important;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-web-service-copy p {
+  max-width: 760px !important;
+  margin: 0 !important;
+  color: #64748b !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  font-weight: 420 !important;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-web-service-tags {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 7px !important;
+  margin-top: 10px !important;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-web-service-tags span,
+body.theme-ahost-prism[data-app="site"] .ao-web-service-side small {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 28px !important;
+  padding: 5px 9px !important;
+  border: 1px solid #dbe7f6 !important;
+  border-radius: 999px !important;
+  background: rgba(248, 251, 255, .9) !important;
+  color: #64748b !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-web-service-side {
+  display: grid !important;
+  justify-items: end !important;
+  gap: 9px !important;
+  min-width: 180px !important;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-web-service-side .ao-content-btn {
+  min-height: 40px !important;
+  padding: 10px 14px !important;
+  border-radius: 13px !important;
+  font-size: 13px !important;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-service-page .ao-service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-service-page .ao-service-card-pro {
+  min-width: 0;
+  min-height: 250px;
+  display: grid;
+  align-content: start;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 0;
+  padding: 22px;
+  border: 1px solid rgba(219, 231, 246, .92);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(33, 190, 213, .08), transparent 34%),
+    linear-gradient(145deg, rgba(255,255,255,.97), rgba(248,251,255,.9));
+  box-shadow: 0 18px 48px rgba(15, 23, 42, .065);
+  overflow: hidden;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-service-page .ao-service-card-pro:hover {
+  border-color: rgba(37, 99, 235, .22);
+  box-shadow: 0 24px 62px rgba(15, 23, 42, .09);
+  transform: translateY(-2px);
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-service-page .ao-service-icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, .11), rgba(33, 190, 213, .14));
+  color: #0b63e5;
+  font-size: 13px;
+  font-weight: 720;
+  line-height: 1;
+  box-shadow: none;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-service-page .ao-service-card-pro h3 {
+  margin: 18px 0 9px;
+  color: #082f49;
+  font-size: clamp(20px, 1.7vw, 25px);
+  line-height: 1.12;
+  font-weight: 650;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-service-page .ao-service-card-pro p {
+  min-height: 0;
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-service-page .ao-service-card-pro .ao-content-btn {
+  width: max-content;
+  max-width: 100%;
+  min-height: 38px;
+  margin-top: 20px;
+  padding: 10px 14px;
+  border-radius: 13px;
+  font-size: 13px;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-service-page .ao-feature-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 24px 0;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-service-page .ao-feature-strip div {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  min-height: 110px;
+  padding: 18px;
+  border: 1px solid rgba(219, 231, 246, .92);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(33, 190, 213, .08), transparent 34%),
+    linear-gradient(145deg, rgba(255,255,255,.96), rgba(248,251,255,.88));
+  box-shadow: 0 16px 42px rgba(15, 23, 42, .055);
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-service-page .ao-feature-strip strong,
+body.theme-ahost-prism[data-app="site"] .ao-service-page .ao-feature-strip span {
+  display: block;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-service-page .ao-feature-strip strong {
+  color: #082f49;
+  font-size: 21px;
+  line-height: 1.12;
+  font-weight: 680;
+}
+
+body.theme-ahost-prism[data-app="site"] .ao-service-page .ao-feature-strip span {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.45;
+  font-weight: 400;
+}
+
+@media (max-width: 860px) {
+  body.theme-ahost-prism[data-app="site"] .ao-service-page .ao-service-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  body.theme-ahost-prism[data-app="site"] .ao-service-page .ao-feature-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  body.theme-ahost-prism[data-app="site"] .ao-web-service-card {
+    grid-template-columns: 48px minmax(0, 1fr) !important;
+  }
+
+  body.theme-ahost-prism[data-app="site"] .ao-web-service-side {
+    grid-column: 2 !important;
+    justify-items: start !important;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 620px) {
+  body.theme-ahost-prism[data-app="site"] .ao-service-page .ao-service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.theme-ahost-prism[data-app="site"] .ao-service-page .ao-feature-strip {
+    grid-template-columns: 1fr;
+  }
+
+  body.theme-ahost-prism[data-app="site"] .ao-service-page .ao-service-card-pro {
+    min-height: 0;
+    padding: 18px;
+  }
+
+  body.theme-ahost-prism[data-app="site"] .ao-service-landing-page .ao-content-shell {
+    width: min(100% - 24px, 1420px) !important;
+  }
+
+  body.theme-ahost-prism[data-app="site"] .ao-web-service-card {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.theme-ahost-prism[data-app="site"] .ao-web-service-side {
+    grid-column: auto !important;
+  }
+}

@@ -1,0 +1,41 @@
+/* DEFAULT / SITE — müşteri giriş & kayıt formu */
+
+.aho-customer-auth {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    padding-block: var(--aho-space-16);
+}
+.aho-customer-auth__card {
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
+    background: var(--aho-color-bg);
+    border: 1px solid var(--aho-color-border);
+    border-radius: var(--aho-radius-xl);
+    padding: var(--aho-space-8);
+    box-shadow: var(--aho-shadow-lg);
+}
+.aho-customer-auth__title {
+    text-align: center;
+    margin-bottom: var(--aho-space-2);
+    font-size: var(--aho-text-2xl);
+}
+.aho-customer-auth__subtitle {
+    text-align: center;
+    color: var(--aho-color-ink-500);
+    font-size: var(--aho-text-sm);
+    margin-bottom: var(--aho-space-6);
+}
+.aho-customer-auth__footer {
+    text-align: center;
+    margin-top: var(--aho-space-4);
+    font-size: var(--aho-text-sm);
+    color: var(--aho-color-ink-500);
+}
+.aho-customer-auth__forgot {
+    text-align: right;
+    margin-top: -8px;
+    margin-bottom: var(--aho-space-4);
+    font-size: var(--aho-text-xs);
+}

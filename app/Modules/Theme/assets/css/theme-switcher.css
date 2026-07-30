@@ -1,0 +1,200 @@
+/* ==========================================================================
+   Theme Switcher — floating widget (sağ orta)
+   Namespace: .aho-theme-switch-*
+   ========================================================================== */
+
+.aho-theme-switch {
+    position: fixed;
+    right: var(--aho-space-4);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9997;
+}
+
+.aho-theme-switch__toggle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--aho-color-bg);
+    border: 1px solid var(--aho-color-border);
+    box-shadow: var(--aho-shadow-lg);
+    font-size: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform var(--aho-motion-fast), box-shadow var(--aho-motion-fast);
+    color: var(--aho-color-ink-800);
+}
+
+.aho-theme-switch__toggle:hover {
+    transform: scale(1.08);
+    box-shadow: var(--aho-shadow-xl);
+}
+
+.aho-theme-switch__panel {
+    position: absolute;
+    right: calc(100% + var(--aho-space-3));
+    top: 50%;
+    transform: translateY(-50%) scale(0.9);
+    background: var(--aho-color-bg);
+    border: 1px solid var(--aho-color-border);
+    border-radius: var(--aho-radius-lg);
+    box-shadow: var(--aho-shadow-xl);
+    padding: var(--aho-space-4);
+    width: 340px;
+    max-width: calc(100vw - 100px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all var(--aho-motion-base);
+}
+
+.aho-theme-switch.is-open .aho-theme-switch__panel {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.aho-theme-switch__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: var(--aho-space-3);
+    border-bottom: 1px solid var(--aho-color-border);
+    margin-bottom: var(--aho-space-3);
+    color: var(--aho-color-ink-900);
+}
+
+.aho-theme-switch__close {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--aho-color-bg-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 1;
+    color: var(--aho-color-ink-600);
+}
+
+.aho-theme-switch__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--aho-space-2);
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.aho-theme-swatch { margin: 0; }
+.aho-theme-swatch__btn {
+    display: flex;
+    align-items: center;
+    gap: var(--aho-space-3);
+    width: 100%;
+    padding: var(--aho-space-3);
+    background: transparent;
+    border: 2px solid var(--aho-color-border);
+    border-radius: var(--aho-radius-md);
+    cursor: pointer;
+    text-align: left;
+    color: var(--aho-color-ink-800);
+    transition: all var(--aho-motion-fast);
+}
+.aho-theme-swatch__btn:hover {
+    border-color: var(--aho-color-primary-400);
+    background: var(--aho-color-bg-soft);
+}
+.aho-theme-swatch.is-active .aho-theme-swatch__btn {
+    border-color: var(--aho-color-accent-500);
+    background: var(--aho-color-primary-50);
+}
+
+.aho-theme-swatch__colors {
+    display: inline-flex;
+    gap: 3px;
+    flex-shrink: 0;
+}
+.aho-theme-swatch__colors span {
+    width: 18px;
+    height: 32px;
+    border-radius: 4px;
+    display: block;
+}
+
+.aho-theme-swatch__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+.aho-theme-swatch__name {
+    font-weight: 600;
+    font-size: var(--aho-text-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+.aho-theme-swatch__desc {
+    font-size: var(--aho-text-xs);
+    color: var(--aho-color-ink-500);
+    line-height: 1.4;
+}
+.aho-theme-swatch__pro {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #fff;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.aho-theme-swatch__active {
+    background: var(--aho-color-success);
+    color: #fff;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.aho-theme-switch__footer {
+    margin-top: var(--aho-space-3);
+    padding-top: var(--aho-space-3);
+    border-top: 1px solid var(--aho-color-border);
+}
+.aho-theme-switch__mode {
+    display: flex;
+    align-items: center;
+    gap: var(--aho-space-2);
+    font-size: var(--aho-text-xs);
+    color: var(--aho-color-ink-600);
+}
+.aho-theme-switch__mode button {
+    padding: 4px 10px;
+    border-radius: var(--aho-radius-sm);
+    background: var(--aho-color-bg-muted);
+    color: var(--aho-color-ink-800);
+    font-size: var(--aho-text-xs);
+    cursor: pointer;
+}
+.aho-theme-switch__mode button:hover { background: var(--aho-color-primary-100); }
+
+@media (max-width: 767px) {
+    .aho-theme-switch { top: auto; bottom: 90px; transform: none; }
+    .aho-theme-switch__panel {
+        right: 0;
+        top: auto;
+        bottom: calc(100% + var(--aho-space-3));
+        transform: scale(0.9);
+    }
+    .aho-theme-switch.is-open .aho-theme-switch__panel {
+        transform: scale(1);
+    }
+}

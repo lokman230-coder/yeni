@@ -1,0 +1,27 @@
+/* MIDNIGHT / ADMIN — topbar */
+[data-theme-skin="midnight"] .aho-admin-topbar {
+    background: rgba(26, 16, 53, .85);
+    backdrop-filter: blur(12px);
+    border-bottom-color: rgba(168, 85, 247, .18);
+}
+[data-theme-skin="midnight"] .aho-admin-topbar__search input {
+    background: rgba(15, 10, 30, .6);
+    border-color: rgba(168, 85, 247, .18);
+    color: var(--aho-color-ink-900);
+}
+[data-theme-skin="midnight"] .aho-admin-topbar__search input:focus {
+    border-color: var(--aho-color-accent-500);
+    box-shadow: 0 0 0 4px rgba(217, 70, 239, .22);
+}
+[data-theme-skin="midnight"] .aho-admin-topbar__icon-btn {
+    background: rgba(168, 85, 247, .12); color: var(--aho-color-ink-700);
+}
+[data-theme-skin="midnight"] .aho-admin-topbar__icon-btn:hover {
+    background: rgba(217, 70, 239, .22); color: #fff;
+}
+[data-theme-skin="midnight"] .aho-admin-topbar__user {
+    background: rgba(168, 85, 247, .12); color: var(--aho-color-ink-800);
+}
+[data-theme-skin="midnight"] .aho-admin-topbar__avatar {
+    background: linear-gradient(135deg, var(--aho-color-primary-500), var(--aho-color-accent-500));
+}

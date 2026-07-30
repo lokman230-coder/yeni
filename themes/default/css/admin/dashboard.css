@@ -1,0 +1,34 @@
+/* DEFAULT / ADMIN — dashboard grid ve quick access */
+
+.aho-admin__content {
+    padding: var(--aho-space-6);
+    flex: 1;
+}
+.aho-admin-grid {
+    display: grid;
+    gap: var(--aho-space-6);
+    grid-template-columns: 1fr;
+}
+@media (min-width: 992px) { .aho-admin-grid { grid-template-columns: 1fr 1fr; } }
+
+.aho-quick-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--aho-space-3);
+}
+.aho-quick {
+    padding: var(--aho-space-4);
+    background: var(--aho-color-bg-muted);
+    border-radius: var(--aho-radius-md);
+    text-align: center;
+    text-decoration: none;
+    color: var(--aho-color-ink-800);
+    font-weight: 500;
+    font-size: var(--aho-text-sm);
+    transition: all var(--aho-motion-fast);
+}
+.aho-quick:hover {
+    background: var(--aho-color-primary-100);
+    color: var(--aho-color-primary-800);
+    transform: translateY(-2px);
+}

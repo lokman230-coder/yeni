@@ -1,0 +1,78 @@
+name: Ahost Mobile Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_type:
+        description: 'apk veya aab'
+        required: true
+        default: apk
+        type: choice
+        options: [apk, aab]
+      project_path:
+        description: 'Flutter proje yolu'
+        required: true
+        default: mobile-project
+      app_name:
+        description: 'Uygulama adı'
+        required: true
+        default: Ahost Mobile App
+      package_name:
+        description: 'Android package name'
+        required: true
+        default: com.ahost.mobileapp
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.5'
+          channel: stable
+          cache: true
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Firebase config
+        if: ${{ secrets.FIREBASE_ANDROID_JSON != '' }}
+        env:
+          FIREBASE_ANDROID_JSON: ${{ secrets.FIREBASE_ANDROID_JSON }}
+        run: echo "$FIREBASE_ANDROID_JSON" | base64 --decode > "${{ inputs.project_path }}/android/app/google-services.json"
+      - name: Apply app identity
+        env:
+          APP_NAME: ${{ inputs.app_name }}
+          PACKAGE_NAME: ${{ inputs.package_name }}
+        run: |
+          sed -i "s/android:label=\"[^\"]*\"/android:label=\"$APP_NAME\"/" "${{ inputs.project_path }}/android/app/src/main/AndroidManifest.xml" || true
+          sed -i "s/applicationId \"[^\"]*\"/applicationId \"$PACKAGE_NAME\"/" "${{ inputs.project_path }}/android/app/build.gradle" || true
+      - name: Restore signing key
+        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+        env:
+          KEYSTORE: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: echo "$KEYSTORE" | base64 --decode > "${{ inputs.project_path }}/android/app/release.keystore"
+      - name: Flutter dependencies
+        working-directory: ${{ inputs.project_path }}
+        run: flutter pub get
+      - name: Build APK
+        if: ${{ inputs.build_type == 'apk' }}
+        working-directory: ${{ inputs.project_path }}
+        run: flutter build apk --release
+      - name: Build AAB
+        if: ${{ inputs.build_type == 'aab' }}
+        working-directory: ${{ inputs.project_path }}
+        run: flutter build appbundle --release
+      - name: Upload APK
+        if: ${{ inputs.build_type == 'apk' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ahost-mobile-apk
+          path: ${{ inputs.project_path }}/build/app/outputs/flutter-apk/*.apk
+      - name: Upload AAB
+        if: ${{ inputs.build_type == 'aab' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ahost-mobile-aab
+          path: ${{ inputs.project_path }}/build/app/outputs/bundle/release/*.aab

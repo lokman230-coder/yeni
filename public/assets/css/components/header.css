@@ -1,0 +1,27 @@
+/* Public header fallback only.
+   Active site/auth/customer header design is owned by the selected theme:
+   public/themes/{theme}/assets/css/header.css */
+
+.ao-theme-header-fallback {
+  position: sticky;
+  top: 0;
+  z-index: 9000;
+  width: 100%;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fff;
+}
+
+.ao-theme-header-fallback .ao-public-header__inner {
+  width: min(100% - 32px, 1240px);
+  min-height: 72px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+}
+
+.ao-theme-header-fallback .ao-brand {
+  color: #082f49;
+  font-size: 22px;
+  font-weight: 600;
+  text-decoration: none;
+}

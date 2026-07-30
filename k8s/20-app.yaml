@@ -1,0 +1,108 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ahost-app
+  namespace: ahost
+spec:
+  replicas: 3   # auto-scaling için HPA aşağıda
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels: {app: ahost-app}
+  template:
+    metadata:
+      labels: {app: ahost-app}
+    spec:
+      # İlk deployment'ta migration çalıştır
+      initContainers:
+      - name: migrate
+        image: ahost-one:latest
+        command: ["sh", "-c", "php console migrate --force && php console cron:install"]
+        envFrom:
+        - configMapRef: {name: ahost-config}
+        - secretRef:    {name: ahost-secrets}
+        volumeMounts:
+        - name: storage
+          mountPath: /var/www/html/storage
+      containers:
+      - name: app
+        image: ahost-one:latest
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef: {name: ahost-config}
+        - secretRef:    {name: ahost-secrets}
+        volumeMounts:
+        - name: storage
+          mountPath: /var/www/html/storage
+        - name: backups
+          mountPath: /var/www/html/storage/backups
+        resources:
+          requests: {cpu: "250m", memory: "512Mi"}
+          limits:   {cpu: "1",    memory: "1Gi"}
+        livenessProbe:
+          httpGet: {path: /health, port: 80}
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet: {path: /health, port: 80}
+          initialDelaySeconds: 10
+          periodSeconds: 10
+      volumes:
+      - name: storage
+        persistentVolumeClaim: {claimName: ahost-storage}
+      - name: backups
+        persistentVolumeClaim: {claimName: ahost-backups}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ahost-app
+  namespace: ahost
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: ahost-app
+---
+# Auto-scaling: CPU %70 üzerine çıkarsa +1 pod, %30 altına inerse -1 pod
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ahost-app-hpa
+  namespace: ahost
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ahost-app
+  minReplicas: 3
+  maxReplicas: 20
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target: {type: Utilization, averageUtilization: 70}
+  - type: Resource
+    resource:
+      name: memory
+      target: {type: Utilization, averageUtilization: 80}
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 60
+      policies:
+      - type: Percent
+        value: 100
+        periodSeconds: 60
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+      - type: Percent
+        value: 50
+        periodSeconds: 60

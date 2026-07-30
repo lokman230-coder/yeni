@@ -1,0 +1,391 @@
+﻿body[data-app="site"],
+body[data-app="auth"],
+body.ao-site {
+  margin: 0;
+  background: linear-gradient(120deg, #fff8f1 0%, #fff 45%, #f8f5ff 100%);
+  color: #0f172a;
+  font-family: var(--ao-font, Inter, Arial, sans-serif);
+  font-size: 15px;
+  font-weight: 420;
+  line-height: 1.6;
+}
+body[data-app="site"] *,
+body[data-app="auth"] * { box-sizing: border-box; }
+body[data-app="site"] img,
+body[data-app="auth"] img { max-width: 100%; height: auto; }
+
+body[data-app="site"] .ao-page-main,
+body[data-app="site"] .site-main,
+body[data-app="auth"] .ao-page-main {
+  width: 100%;
+  min-height: 55vh;
+  overflow: hidden;
+}
+body[data-app="site"] .ao-section,
+body[data-app="site"] .site-section,
+body[data-app="site"] .platform-section,
+body[data-app="site"] .prism-container {
+  width: min(100% - 48px, 1600px);
+  margin: 32px auto;
+}
+
+body[data-app="site"] .platform-hero,
+body[data-app="site"] .ao-hero,
+body[data-app="site"] .product-catalog-hero,
+body[data-app="site"] .domain-hero,
+body[data-app="site"] .page-hero,
+body[data-app="site"] .prism-hero {
+  width: min(100% - 48px, 1720px);
+  margin: 32px auto;
+  border: 1px solid #f0d8ca;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 84% 10%, rgba(14,165,233,.14), transparent 34%),
+    linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,248,239,.9));
+  box-shadow: 0 24px 80px rgba(15,23,42,.08);
+  padding: clamp(34px, 5vw, 72px);
+  overflow: hidden;
+}
+body[data-app="site"] h1,
+body[data-app="site"] .platform-hero h1,
+body[data-app="site"] .product-catalog-hero h1,
+body[data-app="site"] .domain-hero h1,
+body[data-app="site"] .page-hero h1 {
+  max-width: 880px;
+  margin: 0;
+  color: #082f49;
+  font-size: clamp(42px, 5.8vw, 92px);
+  font-weight: 720;
+  line-height: .98;
+  letter-spacing: 0;
+}
+body[data-app="site"] h2 {
+  color: #082f49;
+  font-weight: 660;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+body[data-app="site"] p {
+  color: #64748b;
+  font-weight: 420;
+}
+body[data-app="site"] .badge,
+body[data-app="site"] .prism-badge,
+body[data-app="site"] .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 9px 14px;
+  border: 1px solid #ffc7bd;
+  border-radius: 999px;
+  background: #fff4ef;
+  color: #ff675d;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+body[data-app="site"] .hero-actions,
+body[data-app="site"] .ao-actions,
+body[data-app="site"] .hero-ctas,
+body[data-app="site"] .card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+body[data-app="site"] .btn,
+body[data-app="site"] .ao-btn,
+body[data-app="site"] .site-btn,
+body[data-app="site"] .prism-btn,
+body[data-app="site"] button[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 13px 22px;
+  border: 1px solid transparent;
+  border-radius: 17px;
+  background: linear-gradient(135deg, #ff675d, #ff8a5c);
+  color: #fff;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 18px 42px rgba(255,103,93,.24);
+  cursor: pointer;
+}
+body[data-app="site"] .btn.secondary,
+body[data-app="site"] .ao-btn.soft,
+body[data-app="site"] .site-btn.secondary,
+body[data-app="site"] .prism-btn.secondary {
+  background: #fff;
+  color: #082f49;
+  border-color: #f0d8ca;
+  box-shadow: 0 12px 32px rgba(15,23,42,.06);
+}
+body[data-app="site"] .card,
+body[data-app="site"] .ao-card,
+body[data-app="site"] .prism-card,
+body[data-app="site"] .product-card,
+body[data-app="site"] .tool-card,
+body[data-app="site"] .ref-card,
+body[data-app="site"] .cart-card,
+body[data-app="site"] .checkout-card {
+  min-width: 0;
+  border: 1px solid #f0d8ca;
+  border-radius: 24px;
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 20px 58px rgba(15,23,42,.07);
+  color: #0f172a;
+}
+body[data-app="site"] .product-grid,
+body[data-app="site"] .pricing-grid,
+body[data-app="site"] .tools-grid,
+body[data-app="site"] .references-grid,
+body[data-app="site"] .cards-grid,
+body[data-app="site"] .prism-service-grid,
+body[data-app="site"] .prism-proofbar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+body[data-app="site"] input,
+body[data-app="site"] select,
+body[data-app="site"] textarea,
+body[data-app="auth"] input,
+body[data-app="auth"] select,
+body[data-app="auth"] textarea {
+  width: 100%;
+  min-height: 54px;
+  border: 1px solid #f0d8ca;
+  border-radius: 17px;
+  background: #fff;
+  color: #0f172a;
+  padding: 0 16px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 420;
+  outline: 0;
+}
+body[data-app="site"] textarea,
+body[data-app="auth"] textarea {
+  min-height: 120px;
+  padding: 14px 16px;
+}
+body[data-app="site"] input:focus,
+body[data-app="site"] select:focus,
+body[data-app="site"] textarea:focus,
+body[data-app="auth"] input:focus,
+body[data-app="auth"] select:focus,
+body[data-app="auth"] textarea:focus {
+  border-color: #ff9f91;
+  box-shadow: 0 0 0 4px rgba(255,103,93,.12);
+}
+
+body[data-app="site"] .ahost-site-footer,
+body[data-app="auth"] .ahost-site-footer,
+body[data-app="customer"] .ahost-site-footer {
+  margin-top: 56px;
+  background: #102033;
+  color: #e5edf7;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+body[data-app="site"] .ahost-footer-inner,
+body[data-app="auth"] .ahost-footer-inner,
+body[data-app="customer"] .ahost-footer-inner {
+  width: min(100% - 48px, 1600px);
+  margin: 0 auto;
+  padding: 48px 0 28px;
+}
+body[data-app="site"] .ahost-footer-top,
+body[data-app="auth"] .ahost-footer-top,
+body[data-app="customer"] .ahost-footer-top {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 28px;
+}
+body[data-app="site"] .ahost-footer-col,
+body[data-app="auth"] .ahost-footer-col,
+body[data-app="customer"] .ahost-footer-col {
+  display: grid;
+  gap: 10px;
+}
+body[data-app="site"] .ahost-footer-col h4,
+body[data-app="auth"] .ahost-footer-col h4,
+body[data-app="customer"] .ahost-footer-col h4 {
+  margin: 0 0 8px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 650;
+}
+body[data-app="site"] .ahost-footer-col a,
+body[data-app="auth"] .ahost-footer-col a,
+body[data-app="customer"] .ahost-footer-col a,
+body[data-app="site"] .ahost-footer-brand p,
+body[data-app="auth"] .ahost-footer-brand p,
+body[data-app="customer"] .ahost-footer-brand p {
+  color: #b9c7d8;
+  font-size: 14px;
+  font-weight: 420;
+  text-decoration: none;
+}
+body[data-app="site"] .ahost-footer-brand img,
+body[data-app="auth"] .ahost-footer-brand img,
+body[data-app="customer"] .ahost-footer-brand img {
+  max-width: 210px;
+  max-height: 80px;
+  object-fit: contain;
+}
+body[data-app="site"] .ahost-footer-newsletter,
+body[data-app="auth"] .ahost-footer-newsletter,
+body[data-app="customer"] .ahost-footer-newsletter,
+body[data-app="site"] .ahost-footer-bottom,
+body[data-app="auth"] .ahost-footer-bottom,
+body[data-app="customer"] .ahost-footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+body[data-app="site"] .ahost-footer-newsletter form,
+body[data-app="auth"] .ahost-footer-newsletter form,
+body[data-app="customer"] .ahost-footer-newsletter form {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto;
+  gap: 10px;
+  width: min(520px, 100%);
+}
+body[data-app="site"] .ahost-footer-newsletter input,
+body[data-app="auth"] .ahost-footer-newsletter input,
+body[data-app="customer"] .ahost-footer-newsletter input {
+  min-height: 46px;
+  border-color: rgba(255,255,255,.12);
+  background: rgba(255,255,255,.08);
+  color: #fff;
+}
+body[data-app="site"] .ahost-footer-newsletter button,
+body[data-app="auth"] .ahost-footer-newsletter button,
+body[data-app="customer"] .ahost-footer-newsletter button {
+  min-height: 46px;
+  border: 0;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ff675d, #ff8a5c);
+  color: #fff;
+  padding: 0 18px;
+  font-weight: 650;
+}
+body[data-app="site"] .ahost-footer-bottom address,
+body[data-app="auth"] .ahost-footer-bottom address,
+body[data-app="customer"] .ahost-footer-bottom address {
+  display: grid;
+  gap: 7px;
+  font-style: normal;
+  color: #cbd5e1;
+}
+body[data-app="site"] .ahost-footer-bottom address a,
+body[data-app="auth"] .ahost-footer-bottom address a,
+body[data-app="customer"] .ahost-footer-bottom address a {
+  color: #ffb199;
+  text-decoration: none;
+  font-weight: 600;
+}
+body[data-app="site"] .ahost-footer-payments,
+body[data-app="auth"] .ahost-footer-payments,
+body[data-app="customer"] .ahost-footer-payments {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-width: 760px;
+}
+body[data-app="site"] .ahost-footer-payment-logo,
+body[data-app="auth"] .ahost-footer-payment-logo,
+body[data-app="customer"] .ahost-footer-payment-logo,
+body[data-app="site"] .ahost-footer-social-link,
+body[data-app="auth"] .ahost-footer-social-link,
+body[data-app="customer"] .ahost-footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 54px;
+  height: 36px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 650;
+}
+body[data-app="site"] .ahost-footer-payment-logo img,
+body[data-app="auth"] .ahost-footer-payment-logo img,
+body[data-app="customer"] .ahost-footer-payment-logo img {
+  max-width: 82px;
+  max-height: 24px;
+  object-fit: contain;
+}
+body[data-app="site"] .ahost-footer-payment-logo--paytr,
+body[data-app="auth"] .ahost-footer-payment-logo--paytr,
+body[data-app="customer"] .ahost-footer-payment-logo--paytr {
+  min-width: 118px;
+  padding-inline: 16px;
+}
+body[data-app="site"] .ahost-footer-payment-logo--paytr img,
+body[data-app="auth"] .ahost-footer-payment-logo--paytr img,
+body[data-app="customer"] .ahost-footer-payment-logo--paytr img {
+  width: 86px;
+  max-width: 96px;
+  height: 25px;
+  max-height: 28px;
+}
+body[data-app="site"] .ahost-footer-provider,
+body[data-app="auth"] .ahost-footer-provider,
+body[data-app="customer"] .ahost-footer-provider {
+  flex: 1 1 100%;
+  margin: 6px 0 0;
+  color: #cbd5e1;
+  text-align: right;
+  font-size: 13px;
+}
+body[data-app="site"] .ahost-footer-provider a,
+body[data-app="auth"] .ahost-footer-provider a,
+body[data-app="customer"] .ahost-footer-provider a {
+  color: #ffb199;
+  text-decoration: none;
+  font-weight: 650;
+}
+
+@media (max-width: 980px) {
+  body[data-app="site"] .platform-hero,
+  body[data-app="site"] .ao-hero,
+  body[data-app="site"] .product-catalog-hero,
+  body[data-app="site"] .domain-hero,
+  body[data-app="site"] .page-hero,
+  body[data-app="site"] .prism-hero {
+    width: min(100% - 28px, 100%);
+    border-radius: 24px;
+    padding: 28px;
+  }
+}
+@media (max-width: 680px) {
+  body[data-app="site"] h1 {
+    font-size: clamp(38px, 13vw, 58px);
+  }
+  body[data-app="site"] .ahost-footer-newsletter form {
+    grid-template-columns: 1fr;
+  }
+  body[data-app="site"] .ahost-footer-provider,
+  body[data-app="customer"] .ahost-footer-provider {
+    text-align: left;
+  }
+}
+
+
+

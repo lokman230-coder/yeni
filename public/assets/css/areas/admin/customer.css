@@ -1,0 +1,318 @@
+body[data-app="admin"] .ao-admin-customer-profile {
+  display: grid !important;
+  gap: 20px !important;
+}
+body[data-app="admin"] .ao-cp-hero {
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 26px !important;
+  border: 1px solid rgba(147,197,253,.4) !important;
+  background:
+    radial-gradient(circle at 88% 18%, rgba(14,165,233,.35), transparent 32%),
+    linear-gradient(135deg, #13213f 0%, #155fa8 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 24px 70px rgba(15,23,42,.16) !important;
+  padding: 28px !important;
+}
+body[data-app="admin"] .ao-cp-hero-top {
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 18px !important;
+  align-items: flex-start !important;
+}
+body[data-app="admin"] .ao-cp-kicker {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 32px !important;
+  padding: 7px 12px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(255,255,255,.25) !important;
+  background: rgba(255,255,255,.1) !important;
+  color: #e0f2fe !important;
+  font-size: 12px !important;
+  font-weight: 650 !important;
+  letter-spacing: .03em !important;
+}
+body[data-app="admin"] .ao-cp-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  margin-top: 18px !important;
+}
+body[data-app="admin"] .ao-cp-avatar {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 76px !important;
+  height: 76px !important;
+  border-radius: 24px !important;
+  background: linear-gradient(135deg, #93c5fd, #a78bfa) !important;
+  color: #fff !important;
+  font-size: 25px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 16px 38px rgba(15,23,42,.22) !important;
+}
+body[data-app="admin"] .ao-cp-title h1 {
+  margin: 0 0 8px !important;
+  color: #fff !important;
+  font-size: clamp(26px, 3vw, 42px) !important;
+  font-weight: 650 !important;
+  line-height: 1.05 !important;
+}
+body[data-app="admin"] .ao-cp-title p,
+body[data-app="admin"] .ao-cp-hero p {
+  margin: 0 !important;
+  color: rgba(255,255,255,.84) !important;
+  font-size: 15px !important;
+  font-weight: 420 !important;
+}
+body[data-app="admin"] .ao-cp-status-line,
+body[data-app="admin"] .ao-cp-hero-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+}
+body[data-app="admin"] .ao-cp-status-line {
+  margin-top: 18px !important;
+}
+body[data-app="admin"] .ao-cp-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 30px !important;
+  padding: 7px 11px !important;
+  border-radius: 999px !important;
+  border: 1px solid #dbe7f6 !important;
+  background: #f8fbff !important;
+  color: #1d4ed8 !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  white-space: nowrap !important;
+}
+body[data-app="admin"] .ao-cp-hero .ao-cp-pill {
+  border-color: rgba(255,255,255,.24) !important;
+  background: rgba(255,255,255,.12) !important;
+  color: #fff !important;
+}
+body[data-app="admin"] .ao-cp-pill.good,
+body[data-app="admin"] .ao-cp-pill.active {
+  background: #dcfce7 !important;
+  border-color: #bbf7d0 !important;
+  color: #15803d !important;
+}
+body[data-app="admin"] .ao-cp-pill.warn { background: #fff7ed !important; border-color: #fed7aa !important; color: #c2410c !important; }
+body[data-app="admin"] .ao-cp-pill.bad { background: #fff1f2 !important; border-color: #fecdd3 !important; color: #be123c !important; }
+body[data-app="admin"] .ao-cp-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 42px !important;
+  padding: 10px 15px !important;
+  border-radius: 15px !important;
+  border: 1px solid rgba(219,231,246,.95) !important;
+  background: #fff !important;
+  color: #0f172a !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  box-shadow: 0 12px 26px rgba(15,23,42,.08) !important;
+  white-space: nowrap !important;
+}
+body[data-app="admin"] .ao-cp-btn.primary {
+  background: linear-gradient(135deg, #2563eb, #06b6d4) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
+body[data-app="admin"] .ao-cp-btn.soft {
+  background: #f8fbff !important;
+  color: #1d4ed8 !important;
+  box-shadow: none !important;
+}
+body[data-app="admin"] .ao-cp-btn.mini {
+  min-height: 34px !important;
+  padding: 8px 11px !important;
+  border-radius: 12px !important;
+  font-size: 12px !important;
+}
+body[data-app="admin"] .ao-cp-switch,
+body[data-app="admin"] .ao-cp-card,
+body[data-app="admin"] .ao-cp-stat {
+  min-width: 0 !important;
+  border: 1px solid #dbe7f6 !important;
+  border-radius: 22px !important;
+  background: rgba(255,255,255,.95) !important;
+  box-shadow: 0 18px 46px rgba(15,23,42,.065) !important;
+}
+body[data-app="admin"] .ao-cp-switch {
+  display: grid !important;
+  grid-template-columns: auto minmax(0,1fr) auto auto !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 16px !important;
+}
+body[data-app="admin"] .ao-cp-switch label,
+body[data-app="admin"] .ao-cp-switch-label {
+  color: #334155 !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+}
+body[data-app="admin"] .ao-cp-stats {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+  gap: 14px !important;
+}
+body[data-app="admin"] .ao-cp-stat {
+  padding: 18px !important;
+}
+body[data-app="admin"] .ao-cp-stat span {
+  color: #64748b !important;
+  font-size: 13px !important;
+  font-weight: 560 !important;
+}
+body[data-app="admin"] .ao-cp-stat strong {
+  display: block !important;
+  margin: 7px 0 !important;
+  color: #020617 !important;
+  font-size: 28px !important;
+  font-weight: 650 !important;
+  line-height: 1 !important;
+}
+body[data-app="admin"] .ao-cp-stat small {
+  color: #64748b !important;
+  font-size: 12px !important;
+  font-weight: 420 !important;
+}
+body[data-app="admin"] .ao-cp-shell {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px) !important;
+  gap: 18px !important;
+  align-items: start !important;
+}
+body[data-app="admin"] .ao-cp-main,
+body[data-app="admin"] .ao-cp-side {
+  min-width: 0 !important;
+}
+body[data-app="admin"] .ao-cp-card {
+  padding: 18px !important;
+  overflow: hidden !important;
+}
+body[data-app="admin"] .ao-cp-card-head {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+  margin-bottom: 14px !important;
+}
+body[data-app="admin"] .ao-cp-card-head h3,
+body[data-app="admin"] .ao-cp-detail-head h4 {
+  margin: 0 !important;
+  color: #082f49 !important;
+  font-size: 18px !important;
+  font-weight: 630 !important;
+}
+body[data-app="admin"] .ao-cp-tabs,
+body[data-app="admin"] .ao-real-tabs {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  padding: 8px !important;
+  margin: -6px -6px 18px !important;
+  border: 1px solid #dbe7f6 !important;
+  border-radius: 18px !important;
+  background: #f8fbff !important;
+}
+body[data-app="admin"] .ao-cp-tabs button,
+body[data-app="admin"] .ao-real-tabs button {
+  min-height: 38px !important;
+  padding: 9px 13px !important;
+  border-radius: 13px !important;
+  border: 1px solid #dbe7f6 !important;
+  background: #fff !important;
+  color: #0f172a !important;
+  font-size: 14px !important;
+  font-weight: 560 !important;
+  box-shadow: none !important;
+}
+body[data-app="admin"] .ao-cp-tabs button.active,
+body[data-app="admin"] .ao-real-tabs button.active {
+  background: linear-gradient(135deg, #2563eb, #06b6d4) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
+body[data-app="admin"] .ao-cp-tab-panel,
+body[data-app="admin"] .ao-tab-panel {
+  display: none !important;
+}
+body[data-app="admin"] .ao-cp-tab-panel.active,
+body[data-app="admin"] .ao-tab-panel.active {
+  display: block !important;
+}
+body[data-app="admin"] .ao-cp-grid-2,
+body[data-app="admin"] .ao-cp-grid-3 {
+  display: grid !important;
+  gap: 16px !important;
+  margin-top: 16px !important;
+}
+body[data-app="admin"] .ao-cp-grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important; }
+body[data-app="admin"] .ao-cp-grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important; }
+body[data-app="admin"] .ao-cp-line {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 14px !important;
+  padding: 11px 0 !important;
+  border-bottom: 1px solid #edf2f7 !important;
+}
+body[data-app="admin"] .ao-cp-line span {
+  color: #64748b !important;
+  font-size: 13px !important;
+  font-weight: 560 !important;
+}
+body[data-app="admin"] .ao-cp-line strong {
+  color: #0f172a !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-align: right !important;
+  overflow-wrap: anywhere !important;
+}
+body[data-app="admin"] .ao-cp-form-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)) !important;
+  gap: 14px !important;
+}
+body[data-app="admin"] .ao-cp-table-wrap {
+  max-width: 100% !important;
+  overflow: auto !important;
+}
+body[data-app="admin"] .ao-cp-table {
+  min-width: 760px !important;
+}
+body[data-app="admin"] .ao-cp-empty {
+  display: grid !important;
+  gap: 4px !important;
+  place-items: center !important;
+  min-height: 110px !important;
+  padding: 22px !important;
+  border: 1px dashed #cbd5e1 !important;
+  border-radius: 18px !important;
+  color: #64748b !important;
+  background: #f8fbff !important;
+  text-align: center !important;
+}
+body[data-app="admin"] .ao-cp-empty strong {
+  color: #082f49 !important;
+  font-weight: 630 !important;
+}
+@media (max-width: 1180px) {
+  body[data-app="admin"] .ao-cp-shell {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-app="admin"] .ao-cp-hero-top,
+  body[data-app="admin"] .ao-cp-switch {
+    grid-template-columns: 1fr !important;
+    display: grid !important;
+  }
+}

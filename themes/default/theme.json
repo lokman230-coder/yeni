@@ -1,0 +1,16 @@
+{
+    "name": "Ocean (Varsayılan)",
+    "slug": "default",
+    "description": "Deep navy + turkuaz vurgu. Klasik, güvenilir, kurumsal.",
+    "author": "Ahost Bilişim Core",
+    "version": "1.0.0",
+    "colors": {
+        "primary": "#0284c7",
+        "accent":  "#06b6d4",
+        "background": "#ffffff"
+    },
+    "font": "Inter",
+    "supports_dark": true,
+    "is_premium": false,
+    "stylesheets": ["theme.css", "components/buttons.css", "components/forms.css", "components/cards.css", "components/toast.css"]
+}

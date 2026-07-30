@@ -1,0 +1,31 @@
+services:
+  mobile-build-worker:
+    build: .
+    container_name: ahost-mobile-build-worker
+    restart: unless-stopped
+    ports:
+      - "8090:8090"
+    environment:
+      WORKER_API_KEY: change-this-worker-key
+      FLUTTER_VERSION: 3.24.5
+      ANDROID_API: "34"
+      ANDROID_BUILD_TOOLS: 34.0.0
+      WORKER_PORT: 8090
+      KEYSTORE_PATH: /opt/ahost-worker/storage/release.keystore
+      KEY_ALIAS: release
+      KEYSTORE_PASSWORD: change-this-secret
+      KEY_PASSWORD: change-this-secret
+    volumes:
+      - ./storage:/opt/ahost-worker/storage
+      - ./builds:/opt/ahost-worker/builds
+      - ./output:/opt/ahost-worker/output
+      - android-sdk:/opt/android-sdk
+      - flutter-sdk:/opt/flutter
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8090/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+volumes:
+  android-sdk:
+  flutter-sdk:

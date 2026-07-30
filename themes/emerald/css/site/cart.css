@@ -1,0 +1,3 @@
+/* EMERALD / SITE — sepet */
+[data-theme-skin="emerald"] .aho-cart-summary { background: var(--aho-color-primary-50); }
+[data-theme-skin="emerald"] .aho-cart-item__price { color: var(--aho-color-primary-700); }

@@ -1,0 +1,15 @@
+﻿/* Consolidated customer CSS: notifications.css */
+
+.ao-notification-card{display:flex;gap:12px;padding:12px;border-bottom:1px solid rgba(0,0,0,0.04)}
+.ao-notification-card.is-unread{background:#fffef7}
+.ao-notification-card.is-pinned{border-left:4px solid #f59e0b;background:#fffdf6}
+.ao-notification-icon{font-size:22px}
+.ao-notification-actions{margin-left:auto;display:flex;gap:6px;align-items:center}
+.ao-notification-card .hidden{display:none}
+.ao-tab-panel .load-more{display:block;margin:12px auto 0;padding:8px 12px}
+
+
+
+/* Customer notification center */
+/* scoped: customer notification center only */
+.ao-cn-wrap .ao-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}.ao-cn-wrap .ao-tabs button{border:1px solid #e5e7eb;background:#fff;border-radius:999px;padding:8px 12px;font-weight:560;color:#475569;cursor:pointer}.ao-cn-wrap .ao-tabs button.active{background:#2563eb;color:#fff;border-color:#2563eb}.ao-cn-wrap .ao-tab-panel{display:none}.ao-cn-wrap .ao-tab-panel.active{display:block}.ao-cn-card{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:start;border:1px solid #e5e7eb;border-radius:16px;background:#fff;padding:14px;margin-bottom:10px}.ao-cn-icon{width:42px;height:42px;border-radius:14px;background:#f1f5f9;display:flex;align-items:center;justify-content:center}.ao-cn-content h3{margin:0 0 5px;font-size:1rem}.ao-cn-content p{margin:0 0 7px;color:#475569;line-height:1.5}.ao-cn-content small{color:#64748b}.ao-cn-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.ao-cn-btn{border:1px solid #e5e7eb;background:#fff;border-radius:10px;padding:7px 10px;font-weight:560;color:#334155;text-decoration:none;cursor:pointer;font-size:.86rem}.ao-cn-btn.primary{background:#2563eb;border-color:#2563eb;color:#fff}.ao-cn-btn.danger{color:#b91c1c}.ao-cn-empty{border:1px dashed #cbd5e1;border-radius:16px;background:#f8fafc;padding:24px;text-align:center;color:#64748b}.ao-cn-empty strong{display:block;color:#0f172a;margin-bottom:5px}.ao-cn-unread{border-color:#93c5fd;background:#f8fbff}.ao-cn-detail{display:none;margin-top:10px;padding:12px;border-radius:12px;background:#f8fafc;border:1px solid #e5e7eb;color:#334155}.ao-cn-card.open .ao-cn-detail{display:block}@media(max-width:720px){.ao-cn-card{grid-template-columns:36px 1fr}.ao-cn-actions{grid-column:1/-1;justify-content:flex-start}}

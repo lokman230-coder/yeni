@@ -1,0 +1,275 @@
+﻿/* Consolidated customer CSS: isolation.css */
+
+/* Customer final isolation layer.
+   Loaded after active theme CSS, scoped to the customer top navigation shell only. */
+html:has(body[data-app="client"].ao-customer-topnav),
+body[data-app="client"].ao-customer-topnav{
+  max-width:100%;
+  overflow-x:hidden;
+}
+body[data-app="client"].ao-customer-topnav,
+body[data-app="client"].ao-customer-topnav *{
+  box-sizing:border-box;
+}
+body[data-app="client"].ao-customer-topnav{
+  padding-top:0;
+  scroll-padding-top:calc(var(--ao-client-header-height, 118px) + 18px);
+}
+body[data-app="client"].ao-customer-topnav .ao-customer-shell,
+body[data-app="client"].ao-customer-topnav .customer-shell{
+  padding-top:14px;
+}
+body[data-app="client"].ao-customer-topnav .ao-customer-shell,
+body[data-app="client"].ao-customer-topnav .customer-shell,
+body[data-app="client"].ao-customer-topnav .ao-customer-main,
+body[data-app="client"].ao-customer-topnav .customer-main,
+body[data-app="client"].ao-customer-topnav .ao-customer-top-tabs,
+body[data-app="client"].ao-customer-topnav .ao-customer-summary-strip{
+  max-width:100%;
+  min-width:0;
+}
+body[data-app="client"].ao-customer-topnav .ao-customer-main>.ao-customer-body-content,
+body[data-app="client"].ao-customer-topnav .customer-main>.ao-customer-body-content{
+  padding:0;
+  margin:0;
+  min-width:0;
+  max-width:100%;
+}
+body[data-app="client"].ao-customer-topnav .ao-customer-main header:not(.ao-public-header),
+body[data-app="client"].ao-customer-topnav .customer-main header:not(.ao-public-header){
+  position:static;
+  top:auto;
+  z-index:auto;
+  min-height:0;
+  padding:0;
+  margin:0 0 18px;
+  background:transparent;
+  border:0;
+  box-shadow:none;
+}
+body[data-app="client"].ao-customer-topnav table,
+body[data-app="client"].ao-customer-topnav .table-wrap,
+body[data-app="client"].ao-customer-topnav .ao-table-wrap{
+  max-width:100%;
+}
+
+body[data-app="client"].ao-customer-topnav :is(.ao-customer-shell,.ao-customer-main,.ao-customer-top-tabs) :is(h1,h2,h3,h4,.customer-card h3,.ao-card h3,.customer-stat strong,.ao-btn,.ao-mini-btn,strong,b){
+  font-weight:640;
+  letter-spacing:0;
+}
+
+body[data-app="client"].ao-customer-topnav :is(.ao-customer-shell,.ao-customer-main,.ao-customer-top-tabs) :is(p,small,span,label,td,th,input,select,textarea,button,a){
+  font-weight:500;
+  letter-spacing:0;
+}
+
+body[data-app="client"].ao-customer-topnav .ao-customer-tab-card b{
+  font-weight:560;
+}
+
+body[data-app="client"].ao-customer-topnav :is(.ao-customer-tab-card small,.ao-customer-tabs-head small){
+  font-weight:430;
+}
+
+body[data-app="client"].ao-customer-topnav .ao-customer-tab-grid{
+  max-width:100%;
+  min-width:0;
+}
+
+body[data-app="client"].ao-customer-topnav .ao-customer-tab-card{
+  min-width:0;
+  max-width:100%;
+}
+
+body[data-app="client"].ao-customer-topnav :is(.customer-card,.ao-card,.customer-panel-card,.ao-customer-card,.customer-stat,.ao-customer-widget){
+  min-width:0;
+  max-width:100%;
+  border-radius:min(var(--ao-radius, 18px), 18px);
+}
+
+body[data-app="client"].ao-customer-topnav :is(.table-wrap,.ao-table-wrap,.customer-table-wrap,.invoice-table-wrap){
+  overflow-x:auto;
+  overflow-y:visible;
+}
+
+body[data-app="client"].ao-customer-topnav :is(.customer-actions,.ao-actions,.ao-action-row,.customer-page-head){
+  flex-wrap:wrap;
+}
+
+body[data-app="client"].ao-customer-topnav :is(input,select,textarea){
+  max-width:100%;
+}
+
+body[data-app="client"].ao-customer-topnav :is(.premium-detail-hero,.customer-page-head,.ao-page-head){
+  max-width:100%;
+  min-width:0;
+}
+
+body[data-app="client"].ao-customer-topnav :is(.premium-detail-hero,.customer-page-head,.ao-page-head)>.ao-form{
+  min-width:0;
+  max-width:100%;
+}
+@media(max-width:900px){
+  body[data-app="client"].ao-customer-topnav :is(.premium-detail-hero,.customer-page-head,.ao-page-head){
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+    align-items:start;
+  }
+  body[data-app="client"].ao-customer-topnav :is(.premium-detail-hero,.customer-page-head,.ao-page-head)>.ao-form{
+    width:100%;
+    margin:0;
+  }
+  body[data-app="client"].ao-customer-topnav :is(.premium-detail-hero,.customer-page-head,.ao-page-head) .ao-form-grid{
+    grid-template-columns:1fr;
+    width:100%;
+  }
+  body[data-app="client"].ao-customer-topnav .ao-customer-tab-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    overflow:visible;
+    gap:8px;
+    padding:0;
+    scroll-snap-type:none;
+  }
+  body[data-app="client"].ao-customer-topnav .ao-customer-tab-card{
+    width:100%;
+    min-width:0;
+    min-height:58px;
+    padding:10px;
+    grid-template-columns:30px minmax(0,1fr);
+    border-radius:15px;
+    transform:none;
+  }
+  body[data-app="client"].ao-customer-topnav .ao-customer-tab-card span{
+    width:30px;
+    height:30px;
+    border-radius:11px;
+    font-size:15px;
+  }
+  body[data-app="client"].ao-customer-topnav .ao-customer-tab-card b{
+    font-size:12.5px;
+    line-height:1.12;
+    overflow-wrap:anywhere;
+  }
+  body[data-app="client"].ao-customer-topnav .ao-customer-tab-card small{
+    font-size:10.5px;
+    line-height:1.16;
+    overflow-wrap:anywhere;
+  }
+}
+
+@media(max-width:520px){
+  body[data-app="client"].ao-customer-topnav .ao-customer-tab-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* RC36: premium customer panel typography and card style layer.
+   This is the last scoped layer for the client shell, so legacy page styles cannot
+   make tabs, buttons, or card content visually heavy again. */
+body[data-app="client"].ao-customer-topnav :is(
+  .ao-customer-tab-card,
+  .ao-customer-pill,
+  .ao-summary-btn,
+  .u2-btn,
+  .cp-btn,
+  .client-btn,
+  .ao-btn,
+  .ao-mini-btn,
+  .button-row a,
+  .button-row button,
+  [role="tab"]
+){
+  font-weight:560;
+  letter-spacing:0;
+  text-wrap:balance;
+}
+
+body[data-app="client"].ao-customer-topnav :is(
+  .ao-customer-tab-card b,
+  .ao-customer-tab-card.active b,
+  .customer-panel-card h2,
+  .customer-panel-card h3,
+  .client-card h2,
+  .client-card h3,
+  .ao-card h2,
+  .ao-card h3,
+  .u2-section-title h3
+){
+  font-weight:580;
+  letter-spacing:0;
+}
+
+body[data-app="client"].ao-customer-topnav :is(
+  .customer-panel-card,
+  .client-card,
+  .ao-card,
+  .u2-card,
+  .ao-service-card
+){
+  background:linear-gradient(180deg,#ffffff 0%,#fbfdff 100%);
+  border:1px solid #e2eaf7;
+  box-shadow:0 16px 38px rgba(15,23,42,.055);
+}
+
+body[data-app="client"].ao-customer-topnav :is(
+  .customer-panel-card p,
+  .client-card p,
+  .ao-card p,
+  .u2-section-title p,
+  .ao-section-title p
+){
+  color:#5f6f85;
+  font-weight:430;
+  line-height:1.58;
+}
+
+body[data-app="client"].ao-customer-topnav :is(
+  .table-like th,
+  .client-table th,
+  .cp-table th
+){
+  font-weight:560;
+  color:#66758b;
+  letter-spacing:.025em;
+}
+
+body[data-app="client"].ao-customer-topnav :is(
+  .table-like td,
+  .client-table td,
+  .cp-table td
+){
+  font-weight:430;
+  color:#172033;
+}
+
+body[data-app="client"].ao-customer-topnav :is(
+  .u2-pill,
+  .status,
+  .renewal-pill,
+  .ao-status-pill
+){
+  font-weight:560;
+  letter-spacing:0;
+}
+
+body[data-app="client"].ao-customer-topnav :is(
+  .e-kpi .meta span,
+  .e-kpi small,
+  .ao-customer-summary-copy p,
+  .ao-domain-action span,
+  .ao-domain-action small,
+  .invoice-row-link
+){
+  font-weight:500;
+}
+
+body[data-app="client"].ao-customer-topnav :is(
+  .e-kpi strong,
+  .invoice-total-amount,
+  .ao-customer-summary-balance strong
+){
+  font-weight:620;
+}
+

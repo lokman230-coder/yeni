@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ahost-storage
+  namespace: ahost
+spec:
+  accessModes: ["ReadWriteMany"]  # storage/uploads paylaşımlı — RWX gerektirir
+  resources:
+    requests:
+      storage: 20Gi
+  # storageClassName: default  # cluster'a göre ayarla (nfs-client, longhorn, csi-driver vs.)
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ahost-db-data
+  namespace: ahost
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 50Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ahost-backups
+  namespace: ahost
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 100Gi

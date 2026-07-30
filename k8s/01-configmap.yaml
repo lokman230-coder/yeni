@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ahost-config
+  namespace: ahost
+data:
+  APP_ENV: "production"
+  APP_DEBUG: "false"
+  APP_URL: "https://ahost.web.tr"
+  DB_CONNECTION: "mysql"
+  DB_HOST: "ahost-db"
+  DB_PORT: "3306"
+  DB_DATABASE: "ahost_one"
+  DB_USERNAME: "ahost"
+  SESSION_SECURE: "true"
+  MAIL_QUEUE_ENABLED: "true"
+  # NOT: İş kredensiyelleri (PayTR/iyzico/SMTP/SMS) admin panelinden girilir,
+  # burada DEĞİL — .env sadece altyapı sırları içindir.

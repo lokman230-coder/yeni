@@ -1,0 +1,93 @@
+version: '3.9'
+
+# Ahost Bilişim — Production docker-compose
+# Kullanım:
+#   cp .env.docker.example .env
+#   docker compose up -d
+#   # 30sn bekle, sonra:
+#   http://localhost:8080  → admin@ahost.web.tr / AhostOne2026!
+
+services:
+  app:
+    build: .
+    image: ahost-one:latest
+    container_name: ahost-app
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8080}:80"
+    environment:
+      APP_ENV: ${APP_ENV:-production}
+      APP_DEBUG: "${APP_DEBUG:-false}"
+      APP_URL: ${APP_URL:-http://localhost:8080}
+      APP_KEY: ${APP_KEY}
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: ${DB_DATABASE:-ahost_one}
+      DB_USERNAME: ${DB_USERNAME:-ahost}
+      DB_PASSWORD: ${DB_PASSWORD:-ahost_secret_change_me}
+      SESSION_SECURE: "${SESSION_SECURE:-false}"
+      AUTO_SEED: "${AUTO_SEED:-true}"
+    volumes:
+      - app_storage:/var/www/html/storage
+      - app_uploads:/var/www/html/public/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "http://localhost/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+
+  db:
+    image: mariadb:10.11
+    container_name: ahost-db
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root_secret_change_me}
+      MARIADB_DATABASE: ${DB_DATABASE:-ahost_one}
+      MARIADB_USER: ${DB_USERNAME:-ahost}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-ahost_secret_change_me}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/mysql-init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    container_name: ahost-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+
+  # Opsiyonel: nginx reverse proxy + SSL (Let's Encrypt)
+  # Yalnızca canlı domain'de kullan; localde app'in 8080'i yeterli.
+  # traefik:
+  #   image: traefik:v3.0
+  #   command:
+  #     - --providers.docker=true
+  #     - --entrypoints.web.address=:80
+  #     - --entrypoints.websecure.address=:443
+  #     - --certificatesresolvers.le.acme.email=admin@ahost.web.tr
+  #     - --certificatesresolvers.le.acme.storage=/letsencrypt/acme.json
+  #     - --certificatesresolvers.le.acme.httpchallenge.entrypoint=web
+  #   ports: ["80:80", "443:443"]
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock:ro
+  #     - traefik_letsencrypt:/letsencrypt
+
+volumes:
+  db_data:
+  redis_data:
+  app_storage:
+  app_uploads:
+  # traefik_letsencrypt:

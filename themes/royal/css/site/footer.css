@@ -1,0 +1,8 @@
+/* ROYAL / SITE — footer */
+[data-theme-skin="royal"] .aho-ftr {
+    background: var(--aho-color-primary-900);
+    border-top: 3px solid var(--aho-color-accent-500);
+}
+[data-theme-skin="royal"] .aho-ftr__brand b { color: var(--aho-color-accent-500); }
+[data-theme-skin="royal"] .aho-ftr__col a:hover { color: var(--aho-color-accent-400); }
+[data-theme-skin="royal"] .aho-ftr__social a:hover { background: var(--aho-color-accent-500); }

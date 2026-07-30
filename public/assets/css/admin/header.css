@@ -1,0 +1,238 @@
+﻿/* Ahost One admin header/topbar. Loaded after sidebar.css so topbar ownership lives here. */
+body[data-app="admin"] .ao-topbar.ao-v222-topbar,
+body[data-app="admin"] .ao-admin-topbar.ao-v222-topbar {
+  min-height: 74px !important;
+  padding: 12px 18px !important;
+  gap: 12px !important;
+  background: rgba(255,255,255,.96) !important;
+  backdrop-filter: blur(16px) !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid #e7edf7 !important;
+  box-shadow: 0 1px 0 rgba(15,23,42,.04) !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 900 !important;
+  display: flex !important;
+  align-items: center !important;
+  overflow: visible !important;
+}
+
+body[data-app="admin"] .ao-mobile-toggle,
+body[data-app="admin"] .ao-admin-mobile-toggle {
+  display: none;
+  border: 0;
+  background: #0f172a;
+  color: #fff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-weight: 560;
+  cursor: pointer;
+}
+
+body[data-app="admin"] .ao-v222-dd {
+  position: relative;
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+}
+
+body[data-app="admin"] .ao-v222-dd > button,
+body[data-app="admin"] .ao-v222-site,
+body[data-app="admin"] .ao-v222-bell {
+  height: 40px;
+  border: 1px solid #dbe7f5;
+  background: #fff;
+  border-radius: 999px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 560;
+  box-shadow: 0 6px 18px rgba(15,23,42,.05);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+body[data-app="admin"] .ao-v222-quick {
+  background: linear-gradient(135deg,#0f172a,#2563eb) !important;
+  color: #fff !important;
+  border: 0 !important;
+}
+
+body[data-app="admin"] .ao-v222-new {
+  background: #eef6ff !important;
+  color: #1d4ed8 !important;
+}
+
+body[data-app="admin"] .ao-v222-search {
+  flex: 1 1 280px !important;
+  max-width: none !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  margin-left: 0 !important;
+}
+
+body[data-app="admin"] .ao-v222-search input {
+  height: 42px !important;
+  border-radius: 999px !important;
+  border: 1px solid #dbe7f5 !important;
+  background: #f8fbff !important;
+  padding: 0 16px !important;
+  min-width: 260px !important;
+  width: 100% !important;
+  font-weight: 520 !important;
+}
+
+body[data-app="admin"] .ao-v222-search button {
+  border-radius: 999px !important;
+  height: 42px !important;
+  border: 0 !important;
+  background: #0f172a !important;
+  color: #fff !important;
+  padding: 0 14px !important;
+  font-weight: 560 !important;
+}
+
+body[data-app="admin"] .ao-v222-mega,
+body[data-app="admin"] .ao-v222-menu {
+  display: none;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  background: #fff;
+  border: 1px solid #e5edf8;
+  border-radius: 22px;
+  box-shadow: 0 24px 70px rgba(15,23,42,.18);
+  z-index: 2000;
+  padding: 16px;
+  color: #0f172a;
+}
+
+body[data-app="admin"] .ao-v222-dd.is-open .ao-v222-mega,
+body[data-app="admin"] .ao-v222-dd.is-open .ao-v222-menu,
+body[data-app="admin"] .ao-v222-dd.open .ao-v222-mega,
+body[data-app="admin"] .ao-v222-dd.open .ao-v222-menu {
+  display: grid !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+}
+
+body[data-app="admin"] .ao-v222-mega {
+  width: min(760px, calc(100vw - 80px));
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 10px;
+}
+
+body[data-app="admin"] .ao-v222-mega a {
+  padding: 14px;
+  border: 1px solid #edf2f7;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #0f172a;
+  background: linear-gradient(180deg,#fff,#f8fbff);
+}
+
+body[data-app="admin"] .ao-v222-mega a:hover {
+  border-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+body[data-app="admin"] .ao-v222-mega b {
+  display: block;
+  font-size: 14px;
+}
+
+body[data-app="admin"] .ao-v222-mega small {
+  display: block;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+body[data-app="admin"] .ao-v222-menu.small {
+  min-width: 220px;
+  grid-template-columns: 1fr;
+  gap: 4px;
+}
+
+body[data-app="admin"] .ao-v222-menu.right {
+  right: 0;
+  left: auto;
+}
+
+body[data-app="admin"] .ao-v222-menu a {
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #0f172a;
+}
+
+body[data-app="admin"] .ao-v222-menu a:hover {
+  background: #f1f5f9;
+}
+
+@media (max-width: 1100px) {
+  body[data-app="admin"] .ao-mobile-toggle,
+  body[data-app="admin"] .ao-admin-mobile-toggle {
+    display: inline-flex !important;
+  }
+
+  body[data-app="admin"] .ao-v222-search,
+  body[data-app="admin"] .ao-v222-site {
+    display: none !important;
+  }
+}
+
+@media (max-width: 820px) {
+  body[data-app="admin"] .ao-topbar.ao-v222-topbar,
+  body[data-app="admin"] .ao-admin-topbar.ao-v222-topbar {
+    height: auto !important;
+    min-height: 62px !important;
+    padding: 10px !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    scrollbar-width: none !important;
+  }
+
+  body[data-app="admin"] .ao-topbar.ao-v222-topbar::-webkit-scrollbar,
+  body[data-app="admin"] .ao-admin-topbar.ao-v222-topbar::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  body[data-app="admin"] .ao-v222-dd {
+    position: static !important;
+  }
+
+  body[data-app="admin"] .ao-v222-dd > button,
+  body[data-app="admin"] .ao-v222-new,
+  body[data-app="admin"] .ao-v222-user,
+  body[data-app="admin"] .ao-v222-bell {
+    height: 44px !important;
+    border-radius: 18px !important;
+    padding: 8px 13px !important;
+    font-size: 14px !important;
+    line-height: 1.1 !important;
+  }
+
+  body[data-app="admin"] .ao-v222-dd.is-open > .ao-v222-mega,
+  body[data-app="admin"] .ao-v222-dd.is-open > .ao-v222-menu {
+    position: fixed !important;
+    left: 12px !important;
+    right: 12px !important;
+    top: 78px !important;
+    width: auto !important;
+    max-height: calc(100vh - 105px) !important;
+    overflow: auto !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    background: #fff !important;
+    color: #0f172a !important;
+    border-radius: 24px !important;
+    z-index: 99999 !important;
+  }
+}
+

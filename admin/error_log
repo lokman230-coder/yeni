@@ -1,0 +1,2 @@
+[29-Jul-2026 19:11:36 UTC] [ao] SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) @ /home/heryernet/public_html/app/bootstrap.php:92
+[29-Jul-2026 19:12:32 UTC] [ao] SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) @ /home/heryernet/public_html/app/bootstrap.php:98

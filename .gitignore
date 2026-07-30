@@ -1,0 +1,11 @@
+.env
+config/installation.php
+storage/installed.lock
+storage/logs/*
+storage/cache/*
+storage/sessions/*
+storage/imports/*
+storage/builder-exports/*
+public/uploads/*
+*.log
+.DS_Store

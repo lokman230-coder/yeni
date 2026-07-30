@@ -1,0 +1,83 @@
+﻿/* Ahost One v27.11 - public content pages compact premium layer.
+   Scope: only public site pages, never admin/customer panels. */
+body[data-app="site"] :is(.ao-page-card,.site-page-card,.content-card,.ao-content-card,.contact-card,.ao-contact-card) {
+  border-radius: 22px !important;
+  border: 1px solid rgba(255, 153, 122, .26) !important;
+  background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,248,244,.74)) !important;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, .055) !important;
+}
+body[data-app="site"] main :is(.ao-page-card,.site-page-card,.content-card,.ao-content-card,.contact-card,.ao-contact-card) {
+  padding: clamp(20px, 3vw, 34px) !important;
+}
+body[data-app="site"] main :is(.ao-page-card,.site-page-card,.content-card,.ao-content-card,.contact-card,.ao-contact-card) :is(h2,h3) {
+  font-size: clamp(20px, 1.75vw, 28px) !important;
+  line-height: 1.14 !important;
+  font-weight: 650 !important;
+  letter-spacing: 0 !important;
+}
+body[data-app="site"] main :is(.ao-page-card,.site-page-card,.content-card,.ao-content-card,.contact-card,.ao-contact-card) p {
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  color: #627089 !important;
+}
+body[data-app="site"] main :is(.ao-contact-grid,.contact-grid) {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, .72fr) !important;
+  gap: 22px !important;
+  align-items: start !important;
+}
+body[data-app="site"] main :is(.ao-support-cta,.contact-support-cta) {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 46px !important;
+  padding: 0 18px !important;
+  border-radius: 14px !important;
+  background: linear-gradient(135deg,#ff675d,#ff8a5c) !important;
+  color: #fff !important;
+  font-weight: 650 !important;
+  text-decoration: none !important;
+  box-shadow: 0 16px 36px rgba(255, 103, 93, .22) !important;
+}
+@media (max-width: 760px) {
+  body[data-app="site"] main :is(.ao-contact-grid,.contact-grid) {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* RC28 final mobile containment after theme CSS. */
+@media (max-width: 760px) {
+  html,
+  body[data-app="site"] {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  body[data-app="site"] :is(.ao-content-shell,.ao-public-shell,.container,.ao-section,.section) {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  body[data-app="site"] :is(.mobile-bottom-nav,.ao-mobile-nav-pro) {
+    left: 8px !important;
+    right: 8px !important;
+    width: auto !important;
+    max-width: calc(100vw - 16px) !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    box-sizing: border-box !important;
+  }
+
+  body[data-app="site"] :is(.mobile-bottom-nav,.ao-mobile-nav-pro) :is(a,button,.mobile-nav-item) {
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  body[data-app="site"] :is(.mobile-bottom-nav,.ao-mobile-nav-pro) :is(a,button,.mobile-nav-item) b {
+    display: grid !important;
+    place-items: center !important;
+    font-size: 15px !important;
+    line-height: 1 !important;
+  }
+}
+

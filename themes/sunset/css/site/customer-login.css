@@ -1,0 +1,6 @@
+/* SUNSET / SITE — müşteri giriş */
+[data-theme-skin="sunset"] .aho-customer-auth {
+    background:
+        radial-gradient(ellipse at top, rgba(249, 115, 22, .12), transparent 55%),
+        var(--aho-color-bg-soft);
+}

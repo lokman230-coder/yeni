@@ -1,0 +1,31 @@
+/* ROYAL / SITE — buton (solid derin, altın accent) */
+[data-theme-skin="royal"] .aho-btn--primary {
+    background: var(--aho-color-primary-900);
+    border-color: var(--aho-color-primary-900);
+    box-shadow: 0 4px 14px rgba(30, 58, 138, .28);
+    color: #fff;
+}
+[data-theme-skin="royal"] .aho-btn--primary:hover:not(:disabled) {
+    background: var(--aho-color-primary-800);
+    color: #fff;
+}
+[data-theme-skin="royal"] .aho-btn--accent {
+    background: var(--aho-color-accent-500);
+    color: var(--aho-color-primary-900);
+    border-color: var(--aho-color-accent-500);
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(245, 158, 11, .35);
+}
+[data-theme-skin="royal"] .aho-btn--accent:hover:not(:disabled) {
+    background: var(--aho-color-accent-600); color: #fff;
+}
+
+/* Serif başlıklar */
+[data-theme-skin="royal"] h1, [data-theme-skin="royal"] h2,
+[data-theme-skin="royal"] .aho-home-hero__title,
+[data-theme-skin="royal"] .aho-home-section__head h2,
+[data-theme-skin="royal"] .aho-pages-hero h1 {
+    font-family: var(--aho-font-serif);
+    letter-spacing: -0.02em;
+    font-weight: 700;
+}

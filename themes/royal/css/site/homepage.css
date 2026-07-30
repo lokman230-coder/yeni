@@ -1,0 +1,20 @@
+/* ROYAL / SITE — ana sayfa */
+[data-theme-skin="royal"] .aho-home-hero {
+    background:
+        radial-gradient(ellipse at top, rgba(30, 58, 138, .08), transparent 60%),
+        radial-gradient(ellipse at bottom right, rgba(245, 158, 11, .06), transparent 50%),
+        var(--aho-color-bg);
+}
+[data-theme-skin="royal"] .aho-home-hero__gradient {
+    background: linear-gradient(135deg, var(--aho-color-primary-900), var(--aho-color-accent-500));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+[data-theme-skin="royal"] .aho-home-hero__badge {
+    background: var(--aho-color-primary-900); color: var(--aho-color-accent-400); border-color: var(--aho-color-primary-800);
+}
+[data-theme-skin="royal"] .aho-home-cta__box {
+    background: var(--aho-color-primary-900); border: 2px solid var(--aho-color-accent-500);
+}
+[data-theme-skin="royal"] .aho-home-cta__box h2 {
+    font-family: var(--aho-font-serif); color: #fff;
+}

@@ -1,0 +1,235 @@
+﻿/* Customer panel navigation and dashboard shell. Shared site header lives in components/header.css. */
+
+body.ao-customer-topnav .cp-stack-top-sm{margin-top:18px}
+body.ao-customer-topnav .cp-stack-top-md{margin-top:20px}
+body.ao-customer-topnav .cp-inline-form{display:inline-flex;align-items:center}
+body.ao-customer-topnav .cp-feature-list{margin:14px 0 18px;padding-left:18px;color:#475569;font-weight:500;line-height:1.55}
+body.ao-customer-topnav .cp-inline-note-card{margin:0;background:rgba(255,255,255,.58)}
+body.ao-customer-topnav .cp-builder-json{width:100%;min-height:260px;border:1px solid #dbe6f4;border-radius:18px;padding:16px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;background:#f8fbff;color:#0f172a;box-sizing:border-box}
+body.ao-customer-topnav .cp-permission-form{border:1px solid #e5edf8;border-radius:18px;padding:16px;margin:12px 0}
+body.ao-customer-topnav .cp-check-row{display:flex;gap:8px;align-items:center}
+body.ao-customer-topnav .ao-domain-modal.is-open{display:flex}
+body.ao-customer-topnav .ao-epp-code{display:block;padding:16px;background:#f8fafc;border-radius:12px;font-size:18px}
+body.ao-customer-topnav .cp-action-row-compact{display:flex;gap:8px;flex-wrap:wrap}
+body.ao-customer-topnav .cp-tight-title{margin:0 0 12px}
+body.ao-customer-topnav .cp-draft-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+body.ao-customer-topnav .cp-draft-card{border:1px solid #dbe7f6;border-radius:16px;padding:14px;background:#f8fbff}
+body.ao-customer-topnav .cp-draft-meta{margin:6px 0 10px;color:#64748b;font-size:13px}
+
+/* --------------------------------------------------------------------------
+   Ahost One RC27 - Customer panel top tab/card navigation
+   - Customer sidebar is intentionally removed from client area only.
+   - Admin sidebar isolation remains untouched.
+   - 24.11.6 customer panel visual language is adapted as scoped CSS.
+-------------------------------------------------------------------------- */
+body.ao-customer-topnav{background:radial-gradient(circle at top left,#e0f2fe 0,#f6f8fc 34%,#ffffff 100%);display:block;min-height:100vh}
+body.ao-customer-topnav .ao-customer-shell,body.ao-customer-topnav .customer-shell{display:block;min-height:100vh;background:transparent}
+body.ao-customer-topnav .ao-customer-top-tabs{width:min(100% - 40px,1460px);margin:24px auto 0;background:linear-gradient(135deg,#ffffff 0%,#f6fbff 58%,#eef4ff 100%);border:1px solid #dbeafe;border-radius:30px;padding:18px;box-shadow:0 22px 60px rgba(37,99,235,.10)}
+body.ao-customer-topnav .ao-customer-tabs-head{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:14px}
+body.ao-customer-topnav .ao-customer-tabs-head strong{display:block;font-size:24px;line-height:1.08;letter-spacing:-.04em;color:#0f172a}
+body.ao-customer-topnav .ao-customer-tabs-head small{display:block;color:#64748b;font-weight:600;margin-top:3px}
+body.ao-customer-topnav .ao-customer-kicker{display:inline-flex;align-items:center;width:max-content;border-radius:999px;background:#eef4ff;color:#1d4ed8;padding:6px 10px;font-size:12px;font-weight:560;margin-bottom:7px}
+body.ao-customer-topnav .ao-customer-tabs-actions{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}
+body.ao-customer-topnav .ao-customer-pill{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:9px 13px;border-radius:999px;background:#fff;border:1px solid #dbe4f0;color:#0f172a;text-decoration:none;font-weight:560;box-shadow:0 8px 18px rgba(15,23,42,.045)}
+body.ao-customer-topnav .ao-customer-pill:hover{background:#eef4ff;color:#1d4ed8}
+body.ao-customer-topnav .ao-customer-pill.danger{background:#fff1f2;color:#be123c;border-color:#fecdd3}
+body.ao-customer-topnav .ao-customer-tab-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+body.ao-customer-topnav .ao-customer-tab-card{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"icon title" "icon sub";gap:2px 10px;align-items:center;min-height:72px;background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:12px 13px;text-decoration:none;color:#0f172a;box-shadow:0 10px 24px rgba(15,23,42,.045);transition:.18s ease}
+body.ao-customer-topnav .ao-customer-tab-card span{grid-area:icon;width:42px;height:42px;border-radius:16px;display:grid;place-items:center;background:#f1f5f9;font-size:20px}
+body.ao-customer-topnav .ao-customer-tab-card b{grid-area:title;font-size:14px;font-weight:560;line-height:1.1;white-space:normal;overflow-wrap:anywhere}
+body.ao-customer-topnav .ao-customer-tab-card small{grid-area:sub;color:#64748b;font-weight:560;font-size:12px;line-height:1.2}
+body.ao-customer-topnav .ao-customer-tab-card:hover,body.ao-customer-topnav .ao-customer-tab-card.active{transform:translateY(-1px);background:linear-gradient(135deg,#eef4ff,#ffffff);border-color:#bfdbfe;color:#1d4ed8;box-shadow:0 16px 34px rgba(37,99,235,.13)}
+body.ao-customer-topnav .ao-customer-tab-card.active span{background:linear-gradient(135deg,#2563eb,#06b6d4);color:#fff}
+body.ao-customer-topnav .ao-customer-main,body.ao-customer-topnav .customer-main{width:min(100% - 40px,1460px);margin:0 auto;padding:22px 0 92px;min-width:0;background:transparent}
+body.ao-customer-topnav .customer-page-head,body.ao-customer-topnav .ao-customer-page-head{display:flex;align-items:center;justify-content:space-between;gap:18px;background:#fff;border:1px solid #e2e8f0;border-radius:28px;padding:24px;margin:0 0 22px;box-shadow:0 14px 34px rgba(15,23,42,.06)}
+body.ao-customer-topnav .customer-page-head h1,body.ao-customer-topnav .ao-customer-page-head h1{font-size:32px;line-height:1.05;margin:0;color:#0f172a}
+body.ao-customer-topnav .customer-page-head p{margin:5px 0 0;color:#64748b;font-weight:600}
+body.ao-customer-topnav .customer-sidebar,body.ao-customer-topnav .ao-customer-sidebar{display:none}
+body.ao-customer-topnav .client-grid.two{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+body.ao-customer-topnav .client-form{display:grid;gap:12px}
+body.ao-customer-topnav .client-form label{font-weight:600;color:#334155}
+body.ao-customer-topnav .client-btn{width:auto;border:0;background:linear-gradient(135deg,#2563eb,#06b6d4);color:#fff;border-radius:14px;padding:12px 16px;font-weight:560;box-shadow:0 12px 26px rgba(37,99,235,.20)}
+body.ao-customer-topnav .role-list{display:grid;gap:10px}
+body.ao-customer-topnav .role-list div,body.ao-customer-topnav .security-grid>div,body.ao-customer-topnav .security-grid label{border:1px solid #e2e8f0;border-radius:16px;padding:14px;background:#f8fbff;display:grid;gap:8px}
+body.ao-customer-topnav .role-list small,body.ao-customer-topnav .log-list small{display:block;color:#64748b;margin-top:4px}
+body.ao-customer-topnav .log-list{display:grid;gap:8px;padding-left:18px}
+body.ao-customer-topnav .security-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+body.ao-customer-topnav .secret-code{display:inline-block;padding:12px;border-radius:12px;background:#0f172a;color:white;letter-spacing:2px}
+body.ao-customer-topnav .client-alert{padding:12px;border-radius:12px;margin-bottom:12px}.client-alert.success{background:#dcfce7}.client-alert.error{background:#fee2e2}
+@media(max-width:1280px){body.ao-customer-topnav .ao-customer-tab-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:900px){body.ao-customer-topnav .ao-customer-top-tabs,body.ao-customer-topnav .ao-customer-main{width:min(100% - 24px,1460px)}body.ao-customer-topnav .ao-customer-tabs-head{align-items:flex-start;flex-direction:column}body.ao-customer-topnav .ao-customer-tabs-actions{justify-content:flex-start}body.ao-customer-topnav .ao-customer-tab-grid{display:flex;overflow:auto;gap:10px;padding:2px 2px 8px;scroll-snap-type:x proximity}body.ao-customer-topnav .ao-customer-tab-card{min-width:178px;scroll-snap-align:start}body.ao-customer-topnav .client-grid.two,body.ao-customer-topnav .security-grid{grid-template-columns:1fr}}
+@media(max-width:620px){body.ao-customer-topnav .ao-customer-top-tabs{border-radius:24px;padding:14px;margin-top:14px}body.ao-customer-topnav .ao-customer-main{padding-top:16px;padding-bottom:128px}body.ao-customer-topnav .customer-page-head{border-radius:22px;padding:20px}body.ao-customer-topnav .customer-page-head h1{font-size:26px}.mobile-bottom-nav.ao-client-mobile-nav{display:grid}}
+@media print{body.ao-customer-topnav .ao-customer-top-tabs,body.ao-customer-topnav .mobile-bottom-nav,body.ao-customer-topnav .ao-public-header{display:none}body.ao-customer-topnav .ao-customer-main{width:100%;padding:0}}
+
+
+/* RC27 customer content style layer from 24.11.6, scoped after premium CSS. */
+body.ao-customer-topnav .client-card{background:#fff;border:1px solid #e5edf8;border-radius:28px;padding:28px;box-shadow:0 22px 55px rgba(15,23,42,.07);margin-bottom:18px;overflow:hidden}
+body.ao-customer-topnav .client-table{width:100%;border-collapse:separate;border-spacing:0 8px}
+body.ao-customer-topnav .client-table th,body.ao-customer-topnav .client-table td{padding:14px;background:#f8fbff;text-align:left}
+body.ao-customer-topnav .client-table th{color:#64748b;font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:560}
+body.ao-customer-topnav .client-form input,body.ao-customer-topnav .client-form select,body.ao-customer-topnav .client-form textarea{width:100%;box-sizing:border-box;border:1px solid #dbe7f6;border-radius:16px;min-height:48px;padding:0 14px;background:#f8fbff}
+body.ao-customer-topnav .status{display:inline-flex;align-items:center;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:560;background:#eef4ff;color:#1d4ed8}
+body.ao-customer-topnav .status.active{background:#dcfce7;color:#166534}
+body.ao-customer-topnav .status.invited{background:#dbeafe;color:#1d4ed8}
+body.ao-customer-topnav .status.disabled{background:#fee2e2;color:#991b1b}
+body.ao-customer-topnav .table-wrap{overflow:auto}
+body.ao-customer-topnav .u2-card{background:#fff;border:1px solid #e5edf8;border-radius:26px;box-shadow:0 18px 46px rgba(15,23,42,.065)}
+
+
+/* RC28: remove extra customer page-head area and let dashboard/content breathe wider */
+body.ao-customer-topnav .ao-customer-top-tabs{width:min(100% - 32px,1600px)}
+body.ao-customer-topnav .ao-customer-main,body.ao-customer-topnav .customer-main{width:min(100% - 32px,1600px);padding:18px 0 92px}
+body.ao-customer-topnav .ao-customer-body-content{display:block;margin:0}
+body.ao-customer-topnav .e-client-hero,body.ao-customer-topnav .e-client-grid,body.ao-customer-topnav .e-customer-layout,body.ao-customer-topnav .renewal-card,body.ao-customer-topnav .auto-renew-card{width:100%}
+@media(max-width:900px){body.ao-customer-topnav .ao-customer-top-tabs,body.ao-customer-topnav .ao-customer-main{width:min(100% - 20px,1600px)}}
+
+
+/* RC29: compact premium customer topnav + tighter dashboard KPI cards */
+body.ao-customer-topnav .ao-customer-top-tabs{
+  width:min(100% - 28px,1640px);
+  margin:14px auto 0;
+  padding:12px;
+  border-radius:24px;
+  box-shadow:0 14px 36px rgba(37,99,235,.08);
+}
+body.ao-customer-topnav .ao-customer-tabs-head{margin-bottom:8px;gap:12px}
+body.ao-customer-topnav .ao-customer-tabs-head strong{font-size:20px}
+body.ao-customer-topnav .ao-customer-tabs-head small{font-size:12px;margin-top:1px}
+body.ao-customer-topnav .ao-customer-kicker{padding:4px 9px;font-size:11px;margin-bottom:4px}
+body.ao-customer-topnav .ao-customer-tabs-actions{gap:7px}
+body.ao-customer-topnav .ao-customer-pill{min-height:34px;padding:7px 11px;font-size:12px}
+body.ao-customer-topnav .ao-customer-tab-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+body.ao-customer-topnav .ao-customer-tab-card{
+  min-height:58px;
+  border-radius:17px;
+  padding:9px 10px;
+  gap:1px 8px;
+  box-shadow:0 8px 18px rgba(15,23,42,.04);
+}
+body.ao-customer-topnav .ao-customer-tab-card span{width:34px;height:34px;border-radius:13px;font-size:17px}
+body.ao-customer-topnav .ao-customer-tab-card b{font-size:13px;line-height:1.06}
+body.ao-customer-topnav .ao-customer-tab-card small{font-size:10.8px;line-height:1.12}
+body.ao-customer-topnav .ao-customer-main,body.ao-customer-topnav .customer-main{width:min(100% - 28px,1640px);padding:14px 0 88px}
+body.ao-customer-topnav .e-client-hero{grid-template-columns:minmax(0,1.72fr) minmax(280px,.58fr);gap:16px;margin-bottom:16px}
+body.ao-customer-topnav .customer-panel-card,body.ao-customer-topnav .client-card{border-radius:24px;padding:22px;box-shadow:0 16px 40px rgba(15,23,42,.055)}
+body.ao-customer-topnav .e-client-welcome h2{font-size:clamp(30px,2.25vw,42px);line-height:1.04;margin-bottom:10px}
+body.ao-customer-topnav .e-client-welcome p{max-width:920px;font-size:15px;line-height:1.55}
+body.ao-customer-topnav .e-client-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  margin:14px 0 16px;
+}
+body.ao-customer-topnav .e-kpi{
+  min-height:116px;
+  padding:16px;
+  border-radius:22px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  grid-template-rows:auto 1fr auto;
+  align-items:center;
+  background:linear-gradient(180deg,#fff,#f8fbff);
+  border:1px solid #dfeafd;
+}
+body.ao-customer-topnav .e-kpi .meta{display:contents}
+body.ao-customer-topnav .e-kpi .meta span{grid-column:1;grid-row:1;color:#64748b;font-size:12px;font-weight:560;letter-spacing:.01em}
+body.ao-customer-topnav .e-kpi .meta i{grid-column:2;grid-row:1 / span 2;width:42px;height:42px;border-radius:15px;font-size:20px;background:linear-gradient(135deg,#eef4ff,#f8fbff);border:1px solid #dbeafe}
+body.ao-customer-topnav .e-kpi strong{grid-column:1;grid-row:2;font-size:34px;letter-spacing:-.055em;margin:2px 0;color:#0f172a}
+body.ao-customer-topnav .e-kpi small{grid-column:1 / -1;grid-row:3;font-size:12px;color:#1d4ed8;font-weight:560}
+body.ao-customer-topnav .e-kpi:hover{transform:translateY(-1px);box-shadow:0 18px 44px rgba(37,99,235,.10);border-color:#bfdbfe}
+body.ao-customer-topnav .e-customer-layout{gap:16px;margin-top:16px}
+@media(max-width:1280px){body.ao-customer-topnav .ao-customer-tab-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:900px){body.ao-customer-topnav .ao-customer-top-tabs,body.ao-customer-topnav .ao-customer-main{width:min(100% - 20px,1640px)}body.ao-customer-topnav .e-client-hero{grid-template-columns:1fr}body.ao-customer-topnav .e-client-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){body.ao-customer-topnav .ao-customer-tabs-head{display:none}body.ao-customer-topnav .e-client-grid{grid-template-columns:1fr}body.ao-customer-topnav .customer-panel-card,body.ao-customer-topnav .client-card{padding:18px}}
+
+
+/* RC31: dashboard summary above tabs, remove KPI row, clickable renewals/invoices */
+body.ao-customer-topnav .ao-customer-summary-strip{width:min(100% - 28px,1640px);margin:14px auto 0;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,.5fr);gap:14px;align-items:stretch}
+body.ao-customer-topnav .ao-customer-summary-copy,body.ao-customer-topnav .ao-customer-summary-balance{background:linear-gradient(135deg,#ffffff,#f8fbff);border:1px solid #dbeafe;border-radius:22px;padding:18px 20px;box-shadow:0 12px 30px rgba(15,23,42,.05)}
+body.ao-customer-topnav .ao-customer-summary-copy h1{margin:6px 0 8px;font-size:clamp(26px,2.2vw,38px);line-height:1.05;color:#0f172a}
+body.ao-customer-topnav .ao-customer-summary-copy p{margin:0;color:#475569;font-weight:500}
+body.ao-customer-topnav .ao-customer-summary-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+body.ao-customer-topnav .ao-summary-btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border-radius:14px;text-decoration:none;font-weight:600;border:1px solid #dbeafe}
+body.ao-customer-topnav .ao-summary-btn.primary{background:linear-gradient(135deg,#2563eb,#7c3aed,#06b6d4);color:#fff;border-color:transparent}
+body.ao-customer-topnav .ao-summary-btn.soft{background:#eef4ff;color:#1d4ed8}
+body.ao-customer-topnav .ao-summary-btn.dark{background:#0f172a;color:#fff;border-color:#0f172a}
+body.ao-customer-topnav .ao-summary-btn.ghost{background:#fff;color:#0f172a}
+body.ao-customer-topnav .ao-customer-summary-balance{background:linear-gradient(180deg,#1e3a8a,#172554);color:#fff;display:grid;gap:10px;align-content:center}
+body.ao-customer-topnav .ao-customer-summary-balance span{font-size:14px;font-weight:600;color:#cbd5e1}
+body.ao-customer-topnav .ao-customer-summary-balance strong{font-size:44px;line-height:1;letter-spacing:-.06em}
+body.ao-customer-topnav .ao-customer-summary-balance .ao-summary-btn{width:max-content;background:linear-gradient(135deg,#4f46e5,#06b6d4);color:#fff;border-color:transparent}
+body.ao-customer-topnav .ao-customer-top-tabs{margin-top:10px}
+body.ao-customer-topnav .e-customer-layout--first{margin-top:0}
+body.ao-customer-topnav .e-renewal-clickable{display:grid;gap:12px}
+body.ao-customer-topnav .e-renewal-link{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 18px;border:1px solid #dbe7f6;border-radius:18px;background:#f8fbff;text-decoration:none;color:#0f172a;transition:.18s ease}
+body.ao-customer-topnav .e-renewal-link:hover{transform:translateY(-1px);border-color:#bfdbfe;background:#fff;box-shadow:0 12px 24px rgba(37,99,235,.08)}
+body.ao-customer-topnav .e-renewal-link b{font-size:15px}
+body.ao-customer-topnav .e-table-clickable tr.clickable-row{cursor:pointer;transition:background .15s ease}
+body.ao-customer-topnav .e-table-clickable tr.clickable-row:hover td{background:#f8fbff}
+body.ao-customer-topnav .invoice-row-link{color:#0f172a;font-weight:600;text-decoration:none}
+body.ao-customer-topnav .invoice-row-link:hover{color:#2563eb}
+@media(max-width:900px){body.ao-customer-topnav .ao-customer-summary-strip{width:min(100% - 20px,1640px);grid-template-columns:1fr}body.ao-customer-topnav .ao-customer-summary-balance strong{font-size:36px}body.ao-customer-topnav .ao-customer-summary-actions{display:grid;grid-template-columns:1fr 1fr}}
+@media(max-width:620px){body.ao-customer-topnav .ao-customer-summary-copy,body.ao-customer-topnav .ao-customer-summary-balance{padding:16px}body.ao-customer-topnav .ao-customer-summary-actions{grid-template-columns:1fr}body.ao-customer-topnav .e-renewal-link{align-items:flex-start;flex-direction:column}}
+
+
+/* RC33 domain detail action grid */
+body.ao-customer-topnav .ao-domain-detail-hero{display:grid;grid-template-columns:minmax(0,.85fr) minmax(480px,1.15fr);gap:18px;align-items:center}
+body.ao-customer-topnav .ao-domain-action-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;width:100%}
+body.ao-customer-topnav .ao-domain-action{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"icon title" "icon sub";gap:2px 9px;align-items:center;text-decoration:none;border:1px solid #dbe7f6;background:linear-gradient(180deg,#fff,#f8fbff);color:#0f172a;border-radius:18px;padding:12px;min-height:64px;box-shadow:0 10px 24px rgba(15,23,42,.045);cursor:pointer;text-align:left;font:inherit}
+body.ao-customer-topnav .ao-domain-action:hover{transform:translateY(-1px);border-color:#bfdbfe;box-shadow:0 16px 32px rgba(37,99,235,.10)}
+body.ao-customer-topnav .ao-domain-action b{grid-area:icon;width:38px;height:38px;border-radius:14px;display:grid;place-items:center;background:#eef4ff;font-size:18px}
+body.ao-customer-topnav .ao-domain-action span{grid-area:title;font-weight:560;font-size:13.5px}
+body.ao-customer-topnav .ao-domain-action small{grid-area:sub;color:#64748b;font-weight:560;font-size:11px}
+body.ao-customer-topnav .ao-domain-action.muted{background:#f8fafc;color:#475569}
+@media(max-width:1100px){body.ao-customer-topnav .ao-domain-detail-hero{grid-template-columns:1fr}body.ao-customer-topnav .ao-domain-action-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){body.ao-customer-topnav .ao-domain-action-grid{grid-template-columns:1fr}}
+
+/* Header layout is owned by customer/isolation.css.
+   Keep this bridge focused on customer panel content cards and tabs. */
+body[data-app="client"].ao-customer-topnav .ao-customer-top-tabs{position:relative;z-index:1}
+
+/* RC35: customer base isolation for the new top navigation shell.
+   Keeps old sidebar-era header/section rules from turning customer content cards sticky. */
+body[data-app="client"].ao-customer-topnav .ao-customer-main>.ao-customer-body-content,
+body[data-app="client"].ao-customer-topnav .customer-main>.ao-customer-body-content{padding:0;margin:0;min-height:0}
+body[data-app="client"].ao-customer-topnav .ao-customer-main header:not(.ao-public-header),
+body[data-app="client"].ao-customer-topnav .customer-main header:not(.ao-public-header){
+  position:static;
+  top:auto;
+  z-index:auto;
+  min-height:0;
+  padding:0;
+  margin:0 0 18px;
+  display:block;
+  align-items:initial;
+  justify-content:initial;
+  gap:0;
+  background:transparent;
+  border:0;
+  box-shadow:none;
+}
+body[data-app="client"].ao-customer-topnav .ao-customer-main header:not(.ao-public-header) h1,
+body[data-app="client"].ao-customer-topnav .customer-main header:not(.ao-public-header) h1{font-size:clamp(26px,2vw,34px);line-height:1.08;margin:0;color:#0f172a}
+body[data-app="client"].ao-customer-topnav .ao-customer-main header:not(.ao-public-header) p,
+body[data-app="client"].ao-customer-topnav .customer-main header:not(.ao-public-header) p{margin:6px 0 0;color:#64748b;font-weight:560}
+
+/* RC35: customer SEO tools use the same shell/card language as the panel. */
+body[data-app="client"].ao-customer-topnav .ao-seo-inline-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:end}
+body[data-app="client"].ao-customer-topnav .ao-seo-inline-form label{margin:0}
+body[data-app="client"].ao-customer-topnav .ao-seo-result-card{display:grid;grid-template-columns:260px minmax(0,1fr);gap:20px;align-items:stretch}
+body[data-app="client"].ao-customer-topnav .ao-seo-score-box{display:grid;place-items:center;text-align:center;border-radius:22px;padding:24px;background:linear-gradient(135deg,#172554,#1d4ed8,#06b6d4);color:#fff}
+body[data-app="client"].ao-customer-topnav .ao-seo-score-box span{font-weight:600;color:#bfdbfe}
+body[data-app="client"].ao-customer-topnav .ao-seo-score-box strong{font-size:58px;line-height:1;letter-spacing:-.06em}
+body[data-app="client"].ao-customer-topnav .ao-seo-score-box small{font-size:22px;color:#dbeafe}
+body[data-app="client"].ao-customer-topnav .ao-seo-score-box p{margin:0;color:#fff;font-weight:600}
+body[data-app="client"].ao-customer-topnav .ao-seo-issue-list{display:grid;gap:9px;list-style:none;margin:14px 0 0;padding:0}
+body[data-app="client"].ao-customer-topnav .ao-seo-issue-list li{border-radius:14px;padding:12px 14px;background:#fff1f2;color:#be123c;border:1px solid #fecdd3;font-weight:600}
+body[data-app="client"].ao-customer-topnav .ao-seo-issue-list.success li{background:#ecfdf5;color:#166534;border-color:#bbf7d0}
+@media(max-width:760px){body[data-app="client"].ao-customer-topnav .ao-seo-inline-form,body[data-app="client"].ao-customer-topnav .ao-seo-result-card{grid-template-columns:1fr}}
+
+
+
+
+
+
+
+

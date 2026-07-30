@@ -1,0 +1,71 @@
+﻿/* Ahost One v27.11 - shared mobile bottom navigation.
+   Loaded by layout-head.php; keeps mobile nav consistent across public/auth/customer pages. */
+.mobile-bottom-nav,
+.ao-mobile-nav-pro {
+  display: none !important;
+}
+@media (max-width: 760px) {
+  body[data-app="site"],
+  body[data-app="auth"],
+  body[data-app="customer"],
+  body[data-app="client"] {
+    padding-bottom: calc(86px + env(safe-area-inset-bottom)) !important;
+  }
+  body :is(.mobile-bottom-nav,.ao-mobile-nav-pro) {
+    position: fixed !important;
+    left: max(10px, env(safe-area-inset-left)) !important;
+    right: max(10px, env(safe-area-inset-right)) !important;
+    bottom: max(10px, env(safe-area-inset-bottom)) !important;
+    z-index: 9995 !important;
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+    padding: 7px !important;
+    border: 1px solid rgba(230, 214, 205, .88) !important;
+    border-radius: 22px !important;
+    background: rgba(255, 255, 255, .96) !important;
+    box-shadow: 0 18px 50px rgba(15, 23, 42, .16) !important;
+    backdrop-filter: blur(16px) !important;
+  }
+  body :is(.mobile-bottom-nav,.ao-mobile-nav-pro) :is(a,button,.mobile-nav-item) {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 50px !important;
+    display: grid !important;
+    grid-template-rows: 20px auto !important;
+    place-items: center !important;
+    align-content: center !important;
+    justify-content: center !important;
+    gap: 2px !important;
+    padding: 6px 3px !important;
+    border: 0 !important;
+    border-radius: 16px !important;
+    background: transparent !important;
+    color: #22304a !important;
+    font: 520 10.5px/1.1 var(--ao-font, Inter, system-ui, sans-serif) !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    white-space: normal !important;
+  }
+  body :is(.mobile-bottom-nav,.ao-mobile-nav-pro) :is(a,button,.mobile-nav-item) b {
+    width: 22px !important;
+    height: 20px !important;
+    display: grid !important;
+    place-items: center !important;
+    margin: 0 auto !important;
+    font-size: 16px !important;
+    line-height: 1 !important;
+    font-weight: 500 !important;
+  }
+  body :is(.mobile-bottom-nav,.ao-mobile-nav-pro) :is(a,button,.mobile-nav-item) span {
+    display: block !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  body :is(.mobile-bottom-nav,.ao-mobile-nav-pro) :is(.active,.support-open) {
+    background: linear-gradient(135deg, rgba(255,103,93,.14), rgba(33,190,213,.12)) !important;
+    color: #0b2f4a !important;
+  }
+}
+

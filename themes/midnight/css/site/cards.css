@@ -1,0 +1,16 @@
+/* MIDNIGHT / SITE — kartlar (glassmorphism) */
+[data-theme-skin="midnight"] .aho-card {
+    background: linear-gradient(135deg, rgba(168, 85, 247, .08), rgba(217, 70, 239, .04));
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(168, 85, 247, .18);
+    box-shadow: 0 8px 32px rgba(88, 28, 135, .12);
+}
+[data-theme-skin="midnight"] .aho-card--hover:hover {
+    border-color: var(--aho-color-accent-500);
+    box-shadow: 0 12px 40px rgba(217, 70, 239, .28);
+    transform: translateY(-4px);
+}
+[data-theme-skin="midnight"] .aho-feature-card__icon {
+    background: linear-gradient(135deg, var(--aho-color-primary-500), var(--aho-color-accent-500));
+    box-shadow: 0 4px 16px rgba(168, 85, 247, .35);
+}

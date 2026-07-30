@@ -1,0 +1,148 @@
+.ao-site-heroes-admin {
+  display: grid;
+  gap: 18px;
+}
+
+.ao-hero-editor-card,
+.ao-hero-list-card {
+  border-radius: 24px;
+  border: 1px solid rgba(203, 213, 225, .82);
+  box-shadow: 0 22px 60px rgba(15, 23, 42, .06);
+}
+
+.ao-hero-form-grid,
+.ao-hero-style-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ao-hero-style-grid {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(226, 232, 240, .9);
+}
+
+.ao-hero-form-grid label,
+.ao-hero-style-grid label {
+  display: grid;
+  gap: 7px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.ao-hero-form-grid .full {
+  grid-column: 1 / -1;
+}
+
+.ao-hero-form-grid input,
+.ao-hero-form-grid select,
+.ao-hero-form-grid textarea,
+.ao-hero-style-grid input,
+.ao-hero-style-grid select {
+  width: 100%;
+  border: 1px solid #dbe7f5;
+  border-radius: 14px;
+  background: #f8fbff;
+  color: #0f172a;
+  font: 500 14px/1.45 inherit;
+  padding: 12px 14px;
+  outline: none;
+}
+
+.ao-hero-form-grid textarea {
+  min-height: 92px;
+  resize: vertical;
+}
+
+.ao-hero-admin-preview {
+  margin-top: 18px;
+  padding: 24px;
+  border: 1px solid #ffd6c9;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #fff 0%, #fff7f2 55%, #eefbff 100%);
+}
+
+.ao-hero-admin-preview h1 {
+  margin: 10px 0 8px;
+  color: #082f49;
+  font-size: clamp(26px, 3vw, 42px);
+  font-weight: 650;
+  letter-spacing: 0;
+}
+
+.ao-hero-admin-preview p {
+  margin: 0 0 16px;
+  color: #64748b;
+  font-size: 15px;
+}
+
+.ao-hero-admin-list {
+  display: grid;
+  gap: 12px;
+}
+
+.ao-hero-admin-list article {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background: #fff;
+}
+
+.ao-hero-admin-list article.passive {
+  opacity: .66;
+}
+
+.ao-hero-admin-list small {
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.ao-hero-admin-list h4 {
+  margin: 6px 0;
+  color: #0f172a;
+  font-size: 18px;
+  font-weight: 650;
+}
+
+.ao-hero-admin-list p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.ao-hero-row-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.ao-hero-row-actions form {
+  margin: 0;
+}
+
+@media (max-width: 1100px) {
+  .ao-hero-form-grid,
+  .ao-hero-style-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .ao-hero-form-grid,
+  .ao-hero-style-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ao-hero-admin-list article {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

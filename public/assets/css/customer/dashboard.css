@@ -1,0 +1,101 @@
+﻿/* Consolidated customer CSS: dashboard.css */
+
+
+/* Ahost One v24.2.0 - Customer Dashboard UI Polish
+   Scoped only to client panel. Fixes renewal/auto-renew sections and dashboard cards
+   after CSS isolation cleanup.
+*/
+body[data-app="client"] .customer-main > section{
+  padding-bottom:150px;
+}
+body[data-app="client"] .renewal-card,
+body[data-app="client"] .auto-renew-card{
+  background:#fff;
+  border:1px solid #e5edf8;
+  border-radius:28px;
+  padding:24px;
+  margin:22px 0;
+  box-shadow:0 20px 52px rgba(15,23,42,.07);
+  color:#0f172a;
+  overflow:hidden;
+}
+body[data-app="client"] .renewal-card h3,
+body[data-app="client"] .auto-renew-card h3{
+  margin:0 0 16px;
+  font-size:24px;
+  line-height:1.15;
+  letter-spacing:-.02em;
+  color:#0f172a;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+body[data-app="client"] .renewal-card h3::before{content:'';display:inline-grid;place-items:center;width:42px;height:42px;border-radius:16px;background:#eef4ff;font-size:20px}
+body[data-app="client"] .auto-renew-card h3::before{content:'';display:inline-grid;place-items:center;width:42px;height:42px;border-radius:16px;background:#ecfdf3;font-size:20px}
+body[data-app="client"] .renewal-list{display:grid;gap:14px;margin-top:12px}
+body[data-app="client"] .renewal-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:16px;
+  padding:16px;
+  border:1px solid #e5edf8;
+  border-radius:22px;
+  background:linear-gradient(135deg,#f8fafc,#fff);
+}
+body[data-app="client"] .renewal-row-main{display:flex;align-items:center;gap:14px;min-width:0}
+body[data-app="client"] .renewal-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:18px;background:#eef4ff;font-size:22px;flex:0 0 48px}
+body[data-app="client"] .renewal-title{display:block;font-size:16px;line-height:1.25;color:#0f172a;font-weight:650;margin-bottom:4px}
+body[data-app="client"] .renewal-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:#64748b;font-size:13px;font-weight:560;line-height:1.4}
+body[data-app="client"] .renewal-actions{display:flex;align-items:center;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+body[data-app="client"] .renewal-pill,
+body[data-app="client"] .badge-ok,
+body[data-app="client"] .badge-warn,
+body[data-app="client"] .badge-danger{
+  display:inline-flex;
+  align-items:center;
+  border-radius:999px;
+  padding:8px 11px;
+  font-size:12px;
+  font-weight:650;
+  line-height:1;
+  white-space:nowrap;
+}
+body[data-app="client"] .badge-ok{background:#ecfdf3;color:#039855}
+body[data-app="client"] .badge-warn{background:#fff7ed;color:#dc6803}
+body[data-app="client"] .badge-danger{background:#fef2f2;color:#b42318}
+body[data-app="client"] .renewal-empty{padding:18px;border-radius:20px;background:#f8fafc;border:1px dashed #cbd5e1;color:#64748b;font-weight:620}
+body[data-app="client"] .auto-renew-card{
+  background:linear-gradient(135deg,#ffffff 0%,#f8fbff 100%);
+}
+body[data-app="client"] .auto-renew-content{display:grid;grid-template-columns:1fr auto;align-items:center;gap:18px}
+body[data-app="client"] .auto-renew-card p{margin:0;color:#475569;line-height:1.7;font-size:15px;max-width:940px}
+body[data-app="client"] .auto-renew-status{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 13px;background:#ecfdf3;color:#039855;font-weight:650;white-space:nowrap}
+body[data-app="client"] .e-balance a.u2-btn{width:auto;align-self:flex-start;min-width:150px}
+body[data-app="client"] .e-balance strong{white-space:nowrap}
+body[data-app="client"] .customer-sitebar{overflow-x:auto;scrollbar-width:none}
+body[data-app="client"] .customer-sitebar::-webkit-scrollbar{display:none}
+body[data-app="client"] .customer-sitebar nav{white-space:nowrap}
+body[data-app="client"] .mobile-bottom-nav{box-shadow:0 -16px 44px rgba(15,23,42,.12)}
+@media(max-width:920px){
+  body[data-app="client"] .renewal-card,
+  body[data-app="client"] .auto-renew-card{border-radius:24px;padding:20px;margin:18px 0}
+  body[data-app="client"] .renewal-row{grid-template-columns:1fr;align-items:stretch}
+  body[data-app="client"] .renewal-actions{justify-content:flex-start}
+  body[data-app="client"] .auto-renew-content{grid-template-columns:1fr}
+  body[data-app="client"] .auto-renew-status{width:max-content;max-width:100%}
+}
+@media(max-width:560px){
+  body[data-app="client"] .renewal-card h3,
+  body[data-app="client"] .auto-renew-card h3{font-size:21px}
+  body[data-app="client"] .renewal-row-main{align-items:flex-start}
+  body[data-app="client"] .renewal-icon{width:42px;height:42px;border-radius:15px;flex-basis:42px}
+  body[data-app="client"] .renewal-actions .u2-btn{width:100%}
+  body[data-app="client"] .customer-main > section{padding-bottom:170px}
+}
+
+
+
+
+
+

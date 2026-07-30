@@ -1,0 +1,43 @@
+﻿/* Consolidated customer CSS: domain.css */
+
+.domain-center{border-top:4px solid #10b981}.ao-domain-search{display:grid;grid-template-columns:1fr repeat(4,auto);gap:10px;align-items:center}.ao-domain-search input{margin:0}.domain-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}.domain-feature-grid>div{background:#f8fafc;border:1px solid #e5e7eb;border-radius:18px;padding:16px}.ao-domain-modal{display:none;position:fixed;inset:0;z-index:9999}.ao-domain-modal.open{display:block}.ao-domain-backdrop{position:absolute;inset:0;background:rgba(15,23,42,.62);backdrop-filter:blur(4px)}.ao-domain-dialog{position:relative;max-width:920px;width:calc(100% - 32px);max-height:86vh;overflow:auto;margin:6vh auto;background:#fff;border-radius:24px;padding:26px;box-shadow:0 30px 90px rgba(15,23,42,.35);border:1px solid #e5e7eb}.ao-domain-close{position:absolute;right:18px;top:14px;width:42px;height:42px;border:0;border-radius:14px;background:#f1f5f9;color:#0f172a;font-size:28px;line-height:1;cursor:pointer}.ao-domain-dialog h2{margin:0 52px 20px 0;font-size:28px}.ao-loading,.ao-modal-error{padding:22px;border-radius:18px;background:#f8fafc;border:1px solid #e5e7eb}.ao-modal-error{background:#fef2f2;color:#991b1b;border-color:#fecaca}.ao-modal-table{display:grid;grid-template-columns:1fr;gap:8px}.ao-modal-table>div{display:grid;grid-template-columns:220px 1fr;gap:12px;padding:12px 14px;border:1px solid #e5e7eb;border-radius:14px;background:#f8fafc}.ao-modal-table strong{color:#334155}.ao-modal-table span{color:#0f172a;font-weight:560}.ao-record-table{width:100%;border-collapse:separate;border-spacing:0 8px}.ao-record-table th{text-align:left;color:#64748b;padding:8px}.ao-record-table td{background:#f8fafc;border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;padding:12px}.ao-record-table td:first-child{border-left:1px solid #e5e7eb;border-radius:14px 0 0 14px;font-weight:650}.ao-record-table td:last-child{border-right:1px solid #e5e7eb;border-radius:0 14px 14px 0}.ao-dns-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.ao-dns-tabs button{border:1px solid #dbeafe;background:#eff6ff;color:#1d4ed8;border-radius:999px;padding:9px 13px;font-weight:650;cursor:pointer}.ao-dns-tabs button.active{background:#2563eb;color:#fff}.ao-valuation{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.ao-valuation>div{background:linear-gradient(135deg,#eff6ff,#f8fafc);border:1px solid #dbeafe;border-radius:20px;padding:20px;text-align:center}.ao-valuation b{display:block;font-size:28px;color:#1d4ed8}.ao-valuation span{color:#475569;font-weight:600}.ao-muted{color:#64748b;background:#f8fafc;border-radius:16px;padding:14px}@media(max-width:900px){.ao-domain-search{grid-template-columns:1fr}.domain-feature-grid,.ao-valuation{grid-template-columns:1fr}.ao-modal-table>div{grid-template-columns:1fr}.ao-domain-dialog{margin:3vh auto;max-height:94vh}}
+
+/* v7.5.4 domain live query/result fixes */
+.ao-domain-search-result{margin-top:14px;display:block}
+.ao-search-result{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid rgba(15,23,42,.10);border-radius:16px;background:#fff;padding:14px 16px;box-shadow:0 10px 30px rgba(15,23,42,.06)}
+.ao-search-result b{font-size:16px;color:#0f172a}.ao-search-result span{flex:1;color:#64748b;font-size:14px}.ao-search-result.available{border-color:rgba(34,197,94,.35);background:#f0fdf4}.ao-search-result.taken{border-color:rgba(239,68,68,.28);background:#fff7f7}
+.ao-muted{color:#64748b;font-size:13px}
+
+/* v7.5.6 registrar UX/auth-mode cleanup */
+.registrar-help-card{margin-bottom:16px;background:#f8fafc;border-color:#dbeafe;color:#334155}
+.registrar-accordion{display:grid;gap:14px}
+.registrar-item{padding:0;overflow:hidden}
+.registrar-summary{width:100%;display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center;border:0;background:#fff;padding:18px 20px;text-align:left;cursor:pointer;color:#0f172a}
+.registrar-summary strong{display:block;font-size:18px}.registrar-summary small{display:block;color:#64748b;margin-top:4px}.registrar-summary em{font-style:normal;color:#2563eb;font-weight:650}
+.registrar-item.open .registrar-summary{background:#f8fafc;border-bottom:1px solid #e5e7eb}.registrar-item.open .registrar-summary em::after{content:' açık'}
+.registrar-body{padding:20px}.registrar-advanced{margin-top:16px;border:1px solid #e5e7eb;border-radius:18px;padding:14px;background:#fbfdff}.registrar-advanced summary{font-weight:650;cursor:pointer;color:#1d4ed8}.registrar-config-form [data-auth-field].is-hidden{display:none}
+@media(max-width:900px){.registrar-summary{grid-template-columns:1fr auto}.registrar-summary em{grid-column:1/-1}.registrar-body{padding:14px}}
+
+.ao-whois-premium{display:grid;gap:18px}
+.ao-whois-premium-hero{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:18px;align-items:stretch;padding:22px;border:1px solid #dbeafe;border-radius:24px;background:radial-gradient(circle at 88% 12%,rgba(168,85,247,.16),transparent 30%),linear-gradient(135deg,#f8fbff 0%,#fff 58%,#fff7ed 100%);box-shadow:0 18px 50px rgba(15,23,42,.08)}
+.ao-whois-kicker{display:inline-flex;width:max-content;border-radius:999px;background:#eef4ff;color:#1d4ed8;padding:7px 11px;font-size:12px;font-weight:650;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.ao-whois-premium-hero h3{margin:0;font-size:34px;line-height:1.05;letter-spacing:-.04em;color:#0f172a}
+.ao-whois-premium-hero p{margin:10px 0 0;color:#64748b;font-weight:560;line-height:1.5}
+.ao-whois-status-card{display:grid;align-content:center;gap:8px;border:1px solid rgba(255,255,255,.85);border-radius:20px;background:rgba(255,255,255,.86);box-shadow:0 14px 36px rgba(15,23,42,.08);padding:18px}
+.ao-whois-status-card span{font-size:12px;font-weight:650;letter-spacing:.05em;text-transform:uppercase;color:#64748b}
+.ao-whois-status-card strong{display:inline-flex;width:max-content;max-width:100%;border-radius:999px;padding:9px 13px;font-size:14px;line-height:1;color:#334155;background:#eef2f7;overflow:hidden;text-overflow:ellipsis}
+.ao-whois-status-card strong.is-active{background:#dcfce7;color:#166534}
+.ao-whois-status-card strong.is-waiting{background:#fff7ed;color:#c2410c}
+.ao-whois-status-card small{color:#475569;font-weight:620}
+.ao-whois-premium-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ao-whois-premium section,.ao-whois-premium-section{border:1px solid #e2e8f0;border-radius:22px;background:#fff;box-shadow:0 12px 36px rgba(15,23,42,.06);padding:18px}
+.ao-whois-premium h4{margin:0 0 14px;font-size:17px;color:#0f172a;letter-spacing:-.02em}
+.ao-whois-premium-list{display:grid;gap:10px}
+.ao-whois-premium-row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;align-items:center;padding:12px 13px;border:1px solid #edf2f7;border-radius:15px;background:linear-gradient(180deg,#fff,#f8fbff)}
+.ao-whois-premium-row span{font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.04em;color:#64748b}
+.ao-whois-premium-row strong{min-width:0;color:#0f172a;font-size:15px;line-height:1.35;overflow-wrap:anywhere}
+@media(max-width:760px){.ao-whois-premium-hero,.ao-whois-premium-grid{grid-template-columns:1fr}.ao-whois-premium-row{grid-template-columns:1fr;gap:5px}.ao-whois-premium-hero h3{font-size:28px}}
+
+
+
+

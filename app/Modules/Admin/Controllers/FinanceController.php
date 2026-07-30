@@ -1,0 +1,11 @@
+<?php
+declare(strict_types=1);
+namespace App\Modules\Admin\Controllers;
+use App\Core\Database\Connection;
+use App\Core\Http\Request;
+use App\Core\Http\Response;
+use App\Core\View;
+final class FinanceController {
+ public function index(Request $r): Response { $from=trim((string)$r->input('from',''));$to=trim((string)$r->input('to',''));$where='';$params=[];if($from!==''&&preg_match('/^\d{4}-\d{2}-\d{2}$/',$from)){$where.=' AND DATE(p.created_at)>=?';$params[]=$from;}if($to!==''&&preg_match('/^\d{4}-\d{2}-\d{2}$/',$to)){$where.=' AND DATE(p.created_at)<=?';$params[]=$to;}$stats=['revenue'=>0,'paid'=>0,'unpaid'=>0,'overdue'=>0];try{$stats['revenue']=(float)(Connection::selectOne("SELECT COALESCE(SUM(p.amount),0) v FROM payments p WHERE p.status='success'{$where}",$params)['v']??0);$stats['paid']=(int)(Connection::selectOne("SELECT COUNT(*) v FROM invoices WHERE status='paid'")['v']??0);$stats['unpaid']=(int)(Connection::selectOne("SELECT COUNT(*) v FROM invoices WHERE status IN ('unpaid','partially_paid')")['v']??0);$stats['overdue']=(int)(Connection::selectOne("SELECT COUNT(*) v FROM invoices WHERE status='overdue' OR (status='unpaid' AND due_date<CURDATE())")['v']??0);$recent=Connection::select("SELECT p.*,i.invoice_number FROM payments p LEFT JOIN invoices i ON i.id=p.invoice_id WHERE 1=1{$where} ORDER BY p.id DESC LIMIT 100",$params);}catch(\Throwable){$recent=[];}return Response::html((new View())->render('admin::finance/index',['title'=>'Finans','stats'=>$stats,'recent'=>$recent,'from'=>$from,'to'=>$to])); }
+ public function export(Request $r): Response { $rows=Connection::select("SELECT p.id,i.invoice_number,p.method,p.amount,p.currency,p.status,p.created_at FROM payments p LEFT JOIN invoices i ON i.id=p.invoice_id ORDER BY p.id DESC");header('Content-Type: text/csv; charset=utf-8');header('Content-Disposition: attachment; filename=ahost-payments.csv');$out=fopen('php://output','w');fputcsv($out,['ID','Fatura','Yöntem','Tutar','Para Birimi','Durum','Tarih']);foreach($rows as $row)fputcsv($out,$row);fclose($out);exit; }
+}

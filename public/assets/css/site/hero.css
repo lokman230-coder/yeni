@@ -1,0 +1,336 @@
+/* Public site hero system.
+   Every public hero uses this file; page-specific CSS should not redefine hero scale. */
+body[data-app="site"] main :is(
+  .ao-page-hero,
+  .site-page-hero,
+  .page-hero,
+  .content-hero,
+  .ao-content-hero,
+  .ao-service-hero,
+  .ao-market-hero,
+  .ao-tools-hero,
+  .ao-domain-hero-card,
+  .ao-hero,
+  .platform-hero,
+  .contact-hero,
+  .hero-lite,
+  .product-catalog-hero,
+  .ref-hero
+) {
+  min-height: 0 !important;
+  width: min(100% - 40px, var(--ao-hero-max, 1120px)) !important;
+  max-width: var(--ao-hero-max, 1120px) !important;
+  margin: 10px auto 18px !important;
+  padding: var(--ao-hero-padding, clamp(16px, 1.9vw, 24px) clamp(18px, 2.6vw, 30px)) !important;
+  border: 1px solid rgba(255, 153, 122, .26) !important;
+  border-radius: min(var(--ao-hero-radius, 22px), 24px) !important;
+  background: var(--ao-hero-bg,
+    radial-gradient(circle at 8% 12%, rgba(255, 103, 93, .08), transparent 34%),
+    radial-gradient(circle at 92% 12%, rgba(25, 183, 162, .07), transparent 30%),
+    linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,248,244,.74))) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  color: var(--ao-hero-color, #082f49) !important;
+  text-align: var(--ao-hero-align, left) !important;
+  box-shadow: 0 16px 38px rgba(15, 23, 42, .05) !important;
+  overflow: hidden !important;
+}
+
+body[data-app="site"] main .ao-managed-hero {
+  --ao-hero-title-size: clamp(26px, 2.35vw, 36px) !important;
+  --ao-hero-body-size: clamp(13px, .92vw, 15px) !important;
+  border-radius: min(var(--ao-hero-radius, 22px), 24px) !important;
+}
+
+body[data-app="site"] main :is(
+  .ao-page-hero,
+  .site-page-hero,
+  .page-hero,
+  .content-hero,
+  .ao-content-hero,
+  .ao-service-hero,
+  .ao-market-hero,
+  .ao-tools-hero,
+  .ao-domain-hero-card,
+  .ao-hero,
+  .platform-hero,
+  .contact-hero,
+  .hero-lite,
+  .product-catalog-hero,
+  .ref-hero
+) :is(.badge,.eyebrow,.ao-kicker,.ao-content-kicker,.site-kicker) {
+  display: inline-flex !important;
+  align-items: center !important;
+  width: max-content !important;
+  max-width: 100% !important;
+  padding: 7px 13px !important;
+  border: 1px solid rgba(255, 103, 93, .26) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 247, 247, .9) !important;
+  color: var(--ao-hero-accent, #ff675d) !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
+  letter-spacing: .08em !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+}
+
+body[data-app="site"] main :is(
+  .ao-page-hero,
+  .site-page-hero,
+  .page-hero,
+  .content-hero,
+  .ao-content-hero,
+  .ao-service-hero,
+  .ao-market-hero,
+  .ao-tools-hero,
+  .ao-domain-hero-card,
+  .ao-hero,
+  .platform-hero,
+  .contact-hero,
+  .hero-lite,
+  .product-catalog-hero,
+  .ref-hero
+) :is(h1,.h1) {
+  max-width: 760px !important;
+  margin: 9px 0 10px !important;
+  color: var(--ao-hero-color, #082f49) !important;
+  font-size: min(var(--ao-hero-title-size, clamp(26px, 2.35vw, 36px)), clamp(26px, 2.35vw, 36px)) !important;
+  line-height: 1.08 !important;
+  letter-spacing: 0 !important;
+  font-weight: var(--ao-hero-title-weight, 620) !important;
+}
+
+body[data-app="site"] main :is(
+  .ao-page-hero,
+  .site-page-hero,
+  .page-hero,
+  .content-hero,
+  .ao-content-hero,
+  .ao-service-hero,
+  .ao-market-hero,
+  .ao-tools-hero,
+  .ao-domain-hero-card,
+  .ao-hero,
+  .platform-hero,
+  .contact-hero,
+  .hero-lite,
+  .product-catalog-hero,
+  .ref-hero
+) :is(p,.lead) {
+  max-width: 720px !important;
+  color: #63718a !important;
+  font-size: var(--ao-hero-body-size, clamp(13px, .92vw, 15px)) !important;
+  line-height: 1.55 !important;
+  font-weight: 400 !important;
+}
+
+@media (max-width: 760px) {
+  body[data-app="site"] main :is(
+    .ao-page-hero,
+    .site-page-hero,
+    .page-hero,
+    .content-hero,
+    .ao-content-hero,
+    .ao-service-hero,
+    .ao-market-hero,
+    .ao-tools-hero,
+    .ao-domain-hero-card,
+    .ao-hero,
+    .platform-hero,
+    .contact-hero,
+    .hero-lite,
+    .product-catalog-hero,
+    .ref-hero
+  ) {
+    width: min(100% - 24px, 1180px) !important;
+    margin-top: 12px !important;
+    padding: 18px 15px !important;
+    border-radius: 20px !important;
+  }
+
+  body[data-app="site"] main :is(
+    .ao-page-hero,
+    .site-page-hero,
+    .page-hero,
+    .content-hero,
+    .ao-content-hero,
+    .ao-service-hero,
+    .ao-market-hero,
+    .ao-tools-hero,
+    .ao-domain-hero-card,
+    .ao-hero,
+    .platform-hero,
+    .contact-hero,
+    .hero-lite,
+    .product-catalog-hero,
+    .ref-hero
+  ) :is(h1,.h1) {
+    font-size: clamp(24px, 6.8vw, 31px) !important;
+  }
+}
+
+/* RC46: managed hero controls must respect admin values without page CSS fighting back. */
+body[data-app="site"] main .ao-managed-hero[style] {
+  width: min(100% - 40px, var(--ao-hero-max, 1120px)) !important;
+  max-width: var(--ao-hero-max, 1120px) !important;
+  padding: var(--ao-hero-padding, clamp(16px, 1.9vw, 24px) clamp(18px, 2.6vw, 30px)) !important;
+  border-radius: var(--ao-hero-radius, 22px) !important;
+  color: var(--ao-hero-color, #082f49) !important;
+  text-align: var(--ao-hero-align, left) !important;
+}
+body[data-app="site"] main .ao-managed-hero[style] h1 {
+  font-size: var(--ao-hero-title-size, clamp(26px, 2.35vw, 36px)) !important;
+  font-weight: var(--ao-hero-title-weight, 620) !important;
+  color: var(--ao-hero-color, #082f49) !important;
+}
+body[data-app="site"] main .ao-managed-hero[style] p {
+  font-size: var(--ao-hero-body-size, clamp(13px, .92vw, 15px)) !important;
+}
+body[data-app="site"] main .ao-managed-hero[style] :is(.ao-content-kicker,.ao-kicker,.site-kicker) {
+  color: var(--ao-hero-accent, #ff675d) !important;
+}
+/* RC47 universal compact hero lock: final public hero owner. Page CSS may arrange layout, but scale lives here. */
+body[data-app="site"] main :is(
+  .ao-page-hero,
+  .site-page-hero,
+  .page-hero,
+  .content-hero,
+  .ao-content-hero,
+  .ao-service-hero,
+  .ao-market-hero,
+  .ao-tools-hero,
+  .ao-domain-hero-card,
+  .ao-hero,
+  .platform-hero,
+  .contact-hero,
+  .hero-lite,
+  .product-catalog-hero,
+  .ref-hero
+) {
+  min-height: 0 !important;
+  max-height: none !important;
+  width: min(100% - 40px, var(--ao-hero-max, 1120px)) !important;
+  max-width: var(--ao-hero-max, 1120px) !important;
+  margin: 10px auto 18px !important;
+  padding: var(--ao-hero-padding, clamp(16px, 1.7vw, 23px) clamp(18px, 2.4vw, 28px)) !important;
+  border-radius: min(var(--ao-hero-radius, 22px), 24px) !important;
+  box-sizing: border-box !important;
+}
+
+body[data-app="site"] main :is(
+  .ao-page-hero,
+  .site-page-hero,
+  .page-hero,
+  .content-hero,
+  .ao-content-hero,
+  .ao-service-hero,
+  .ao-market-hero,
+  .ao-tools-hero,
+  .ao-domain-hero-card,
+  .ao-hero,
+  .platform-hero,
+  .contact-hero,
+  .hero-lite,
+  .product-catalog-hero,
+  .ref-hero
+) :is(h1,.h1) {
+  max-width: 760px !important;
+  margin: 8px 0 10px !important;
+  font-size: min(var(--ao-hero-title-size, clamp(25px, 2.25vw, 35px)), clamp(25px, 2.25vw, 35px)) !important;
+  line-height: 1.08 !important;
+  font-weight: var(--ao-hero-title-weight, 610) !important;
+  letter-spacing: 0 !important;
+}
+
+body[data-app="site"] main :is(
+  .ao-page-hero,
+  .site-page-hero,
+  .page-hero,
+  .content-hero,
+  .ao-content-hero,
+  .ao-service-hero,
+  .ao-market-hero,
+  .ao-tools-hero,
+  .ao-domain-hero-card,
+  .ao-hero,
+  .platform-hero,
+  .contact-hero,
+  .hero-lite,
+  .product-catalog-hero,
+  .ref-hero
+) :is(p,.lead) {
+  max-width: 720px !important;
+  margin-top: 0 !important;
+  font-size: min(var(--ao-hero-body-size, clamp(13px, .88vw, 15px)), 15px) !important;
+  line-height: 1.52 !important;
+  font-weight: 400 !important;
+}
+
+body[data-app="site"] main :is(
+  .ao-page-hero,
+  .site-page-hero,
+  .page-hero,
+  .content-hero,
+  .ao-content-hero,
+  .ao-service-hero,
+  .ao-market-hero,
+  .ao-tools-hero,
+  .ao-domain-hero-card,
+  .ao-hero,
+  .platform-hero,
+  .contact-hero,
+  .hero-lite,
+  .product-catalog-hero,
+  .ref-hero
+) :is(.badge,.eyebrow,.ao-kicker,.ao-content-kicker,.site-kicker) {
+  min-height: 0 !important;
+  padding: 7px 12px !important;
+  font-size: 10.5px !important;
+  font-weight: 640 !important;
+}
+
+@media (max-width: 760px) {
+  body[data-app="site"] main :is(
+    .ao-page-hero,
+    .site-page-hero,
+    .page-hero,
+    .content-hero,
+    .ao-content-hero,
+    .ao-service-hero,
+    .ao-market-hero,
+    .ao-tools-hero,
+    .ao-domain-hero-card,
+    .ao-hero,
+    .platform-hero,
+    .contact-hero,
+    .hero-lite,
+    .product-catalog-hero,
+    .ref-hero
+  ) {
+    width: min(100% - 22px, 1120px) !important;
+    margin: 8px auto 14px !important;
+    padding: 16px 14px !important;
+    border-radius: 18px !important;
+  }
+
+  body[data-app="site"] main :is(
+    .ao-page-hero,
+    .site-page-hero,
+    .page-hero,
+    .content-hero,
+    .ao-content-hero,
+    .ao-service-hero,
+    .ao-market-hero,
+    .ao-tools-hero,
+    .ao-domain-hero-card,
+    .ao-hero,
+    .platform-hero,
+    .contact-hero,
+    .hero-lite,
+    .product-catalog-hero,
+    .ref-hero
+  ) :is(h1,.h1) {
+    font-size: min(var(--ao-hero-title-size, clamp(24px, 6.4vw, 30px)), clamp(24px, 6.4vw, 30px)) !important;
+  }
+}
