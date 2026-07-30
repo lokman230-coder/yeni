@@ -1,1 +1,0 @@
-* * * * * cd /var/www/html && php console cron:run >> /var/www/html/storage/logs/cron.log 2>&1

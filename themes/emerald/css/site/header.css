@@ -1,7 +1,0 @@
-/* EMERALD / SITE — header */
-[data-theme-skin="emerald"] .aho-topbar { background: var(--aho-color-primary-800); }
-[data-theme-skin="emerald"] .aho-hdr { border-bottom-color: var(--aho-color-primary-100); }
-[data-theme-skin="emerald"] .aho-hdr__brand b { color: var(--aho-color-primary-600); }
-[data-theme-skin="emerald"] .aho-hdr__menu a:hover {
-    background: var(--aho-color-primary-50); color: var(--aho-color-primary-700);
-}

@@ -1,1 +1,0 @@
-<?php return ['slug' => 'license', 'name' => 'License', 'version' => '1.0.0', 'is_core' => false];

@@ -1,7 +1,0 @@
-/* SUNSET / ADMIN — sidebar */
-[data-theme-skin="sunset"] .aho-admin-sidebar {
-    background: linear-gradient(180deg, var(--aho-color-primary-900), var(--aho-color-primary-800));
-}
-[data-theme-skin="sunset"] .aho-admin-sidebar__link.is-active {
-    background: linear-gradient(135deg, var(--aho-color-primary-500), var(--aho-color-accent-500));
-}

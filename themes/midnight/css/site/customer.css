@@ -1,5 +1,0 @@
-/* MIDNIGHT / SITE — müşteri paneli */
-[data-theme-skin="midnight"] .aho-stat-card__value {
-    background: linear-gradient(135deg, var(--aho-color-primary-300), var(--aho-color-accent-400));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-}

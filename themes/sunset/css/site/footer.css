@@ -1,5 +1,0 @@
-/* SUNSET / SITE — footer */
-[data-theme-skin="sunset"] .aho-ftr { background: linear-gradient(180deg, #2a1810, #1c0f08); }
-[data-theme-skin="sunset"] .aho-ftr__brand b { color: var(--aho-color-accent-400); }
-[data-theme-skin="sunset"] .aho-ftr__col a:hover { color: var(--aho-color-accent-400); }
-[data-theme-skin="sunset"] .aho-ftr__social a:hover { background: var(--aho-color-accent-500); }

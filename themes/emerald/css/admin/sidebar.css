@@ -1,8 +1,0 @@
-/* EMERALD / ADMIN — sidebar */
-[data-theme-skin="emerald"] .aho-admin-sidebar {
-    background: linear-gradient(180deg, var(--aho-color-primary-900), var(--aho-color-primary-800));
-}
-[data-theme-skin="emerald"] .aho-admin-sidebar__brand b { color: var(--aho-color-accent-400); }
-[data-theme-skin="emerald"] .aho-admin-sidebar__link.is-active {
-    background: var(--aho-color-accent-500);
-}

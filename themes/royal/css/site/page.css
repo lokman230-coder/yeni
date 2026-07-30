@@ -1,8 +1,0 @@
-/* ROYAL / SITE — statik sayfalar */
-[data-theme-skin="royal"] .aho-pages-hero {
-    background: linear-gradient(135deg, var(--aho-color-primary-50), transparent);
-}
-[data-theme-skin="royal"] .aho-pages-hero h1 {
-    background: linear-gradient(135deg, var(--aho-color-primary-900), var(--aho-color-accent-500));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-}

@@ -1,9 +1,0 @@
-/* EMERALD / SITE — müşteri giriş */
-[data-theme-skin="emerald"] .aho-customer-auth {
-    background:
-        radial-gradient(ellipse at top, rgba(16, 185, 129, .10), transparent 55%),
-        var(--aho-color-bg-soft);
-}
-[data-theme-skin="emerald"] .aho-customer-auth__card {
-    border-color: var(--aho-color-primary-100);
-}

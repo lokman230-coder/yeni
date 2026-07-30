@@ -1,7 +1,0 @@
-/* EMERALD / ADMIN — admin login */
-[data-theme-skin="emerald"] .aho-admin-login {
-    background:
-        radial-gradient(ellipse at top left, rgba(16, 185, 129, .18), transparent 55%),
-        var(--aho-color-bg-soft);
-}
-[data-theme-skin="emerald"] .aho-admin-login__brand h1 b { color: var(--aho-color-primary-600); }

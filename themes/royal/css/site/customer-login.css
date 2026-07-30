@@ -1,7 +1,0 @@
-/* ROYAL / SITE — müşteri giriş */
-[data-theme-skin="royal"] .aho-customer-auth {
-    background:
-        radial-gradient(ellipse at top, rgba(30, 58, 138, .10), transparent 55%),
-        var(--aho-color-bg-soft);
-}
-[data-theme-skin="royal"] .aho-customer-auth__title { font-family: var(--aho-font-serif); }
