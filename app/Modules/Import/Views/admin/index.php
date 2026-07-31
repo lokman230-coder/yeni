@@ -9,6 +9,9 @@ $view->section('content');
             <h1>🔌 Veri Aktarımı</h1>
             <p>WHMCS, WISECP, Blesta gibi dış panellerden müşteri, sipariş, fatura, domain, hosting ve destek talebi aktarın.</p>
         </div>
+        <div class="aho-admin-page__actions">
+            <a href="/admin/veri-aktarimi/sema-kontrol" class="aho-btn aho-btn--outline">🔧 Şema Kontrolü</a>
+        </div>
     </div>
 
     <?php if (!empty($success)): ?><div class="aho-alert aho-alert--success"><?= e($success) ?></div><?php endif; ?>

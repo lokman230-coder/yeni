@@ -279,6 +279,7 @@ $aoBrowserTitle = $aoSeoTitle !== '' ? $aoSeoTitle : ($pageTitle.($aoHeadTitleSu
   <?php endif; ?>
   <meta name="ahost-base-url" content="<?= e(rtrim(url(''), '/')) ?>">
     <meta name="csrf-token" content="<?= e(function_exists('csrf_token')?csrf_token(): '') ?>">
+    <script>window.AHO_BASE_PATH = <?= json_encode(defined('AHO_BASE_PATH') ? AHO_BASE_PATH : '') ?>;</script>
   <?php foreach ($aoHeadScripts as $jsFile): if(!$jsFile) continue; ?>
   <script defer src="<?= assetv($jsFile) ?>"></script>
   <?php endforeach; ?>

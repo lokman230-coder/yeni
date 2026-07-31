@@ -13,6 +13,7 @@ $siteBase = ['/themes/default/css/site/theme.css', '/themes/default/css/site/blo
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="<?= e(csrf_token()) ?>">
+    <script>window.AHO_BASE_PATH = <?= json_encode(defined('AHO_BASE_PATH') ? AHO_BASE_PATH : '') ?>;</script>
     <title><?= e($title) ?> — Ahost Bilişim Admin</title>
     <script>
         (function () {

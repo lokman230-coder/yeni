@@ -1,5 +1,5 @@
 <?php
-$currentPath = $_SERVER['REQUEST_URI'] ?? '/';
+$currentPath = function_exists('ao_request_path_no_base') ? ao_request_path_no_base() : ($_SERVER['REQUEST_URI'] ?? '/');
 $currentPath = strtok($currentPath, '?');
 $menu = [
     ['url' => '/panel',              'label' => 'Kontrol Paneli',    'icon' => '📊'],

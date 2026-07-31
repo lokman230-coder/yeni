@@ -22,7 +22,9 @@ final class SetupMiddleware
         if (InstallGate::isInstalled()) {
             return $next($request);
         }
-        $path = (string) parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH);
+        $path = function_exists('ao_request_path_no_base')
+            ? ao_request_path_no_base()
+            : (string) parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH);
 
         // İzin verilenler
         if (str_starts_with($path, '/kurulum')

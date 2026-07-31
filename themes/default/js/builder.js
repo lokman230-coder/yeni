@@ -582,7 +582,7 @@
                 fd.append('file', file);
                 fd.append('project_id', this.state.projectId);
                 try {
-                    const res = await fetch('/panel/builder/upload', { method: 'POST', body: fd });
+                    const res = await fetch((window.AHO_BASE_PATH || '') + '/panel/builder/upload', { method: 'POST', body: fd });
                     const data = await res.json();
                     if (data.ok && data.url) {
                         this.state.tree.blocks[idx].props[key] = data.url;

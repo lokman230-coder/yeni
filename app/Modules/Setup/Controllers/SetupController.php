@@ -123,6 +123,118 @@ final class SetupController
         return Response::redirect('/kurulum/adim/3');
     }
 
+    /**
+     * Migration çalıştırmak yerine hazır bir .sql (veya .sql içeren .zip)
+     * dosyasını doğrudan veritabanına yükler. Sadece kurulum aşamasında
+     * erişilebilir (SetupMiddleware zaten installed.lock yoksa her isteği
+     * /kurulum'a yönlendiriyor).
+     */
+    public function uploadSql(Request $request): Response
+    {
+        $file = $request->file('sql_file');
+        if (!$file || empty($file['tmp_name']) || !is_uploaded_file($file['tmp_name'])) {
+            SessionManager::flash('setup_migration_result', ['ok' => false, 'log' => 'Dosya yüklenemedi. Tekrar dene.']);
+            SessionManager::flash('error', 'Dosya yüklenemedi.');
+            return Response::redirect('/kurulum/adim/3');
+        }
+
+        $originalName = (string) ($file['name'] ?? 'upload.sql');
+        $ext = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+        if (!in_array($ext, ['sql', 'zip'], true)) {
+            SessionManager::flash('setup_migration_result', ['ok' => false, 'log' => 'Sadece .sql veya .zip dosyası kabul edilir.']);
+            SessionManager::flash('error', 'Geçersiz dosya türü.');
+            return Response::redirect('/kurulum/adim/3');
+        }
+
+        $sqlPath = $file['tmp_name'];
+        $tmpExtractDir = null;
+
+        try {
+            if ($ext === 'zip') {
+                $zip = new \ZipArchive();
+                if ($zip->open($file['tmp_name']) !== true) {
+                    throw new \RuntimeException('Zip dosyası açılamadı (bozuk olabilir).');
+                }
+                $sqlEntry = null;
+                for ($i = 0; $i < $zip->numFiles; $i++) {
+                    $name = $zip->getNameIndex($i);
+                    if (strtolower(pathinfo($name, PATHINFO_EXTENSION)) === 'sql') {
+                        $sqlEntry = $name;
+                        break;
+                    }
+                }
+                if (!$sqlEntry) {
+                    $zip->close();
+                    throw new \RuntimeException('Zip içinde .sql dosyası bulunamadı.');
+                }
+                $tmpExtractDir = sys_get_temp_dir() . '/aho-sql-' . bin2hex(random_bytes(6));
+                mkdir($tmpExtractDir, 0775, true);
+                $zip->extractTo($tmpExtractDir, [$sqlEntry]);
+                $zip->close();
+                $sqlPath = $tmpExtractDir . '/' . $sqlEntry;
+            }
+
+            [$ok, $count, $errors] = self::executeSqlFile($sqlPath);
+
+            $log = "$count SQL komutu çalıştırıldı.";
+            if ($errors) {
+                $log .= "\n\nHatalar (" . count($errors) . "):\n" . implode("\n", array_slice($errors, 0, 30));
+            }
+            SessionManager::flash('setup_migration_result', ['ok' => $ok, 'log' => $log]);
+            SessionManager::flash($ok ? 'success' : 'error', $ok ? 'SQL dosyası başarıyla yüklendi.' : 'SQL yüklenirken hatalar oluştu, log\'u kontrol et.');
+        } catch (\Throwable $e) {
+            SessionManager::flash('setup_migration_result', ['ok' => false, 'log' => $e->getMessage()]);
+            SessionManager::flash('error', 'SQL yükleme başarısız: ' . $e->getMessage());
+        } finally {
+            if ($tmpExtractDir && is_dir($tmpExtractDir)) {
+                array_map('unlink', glob($tmpExtractDir . '/*') ?: []);
+                @rmdir($tmpExtractDir);
+            }
+        }
+
+        return Response::redirect('/kurulum/adim/3');
+    }
+
+    /**
+     * Bir .sql dosyasını basit ama güvenilir bir şekilde satır satır okuyup
+     * (yorum satırlarını atlayarak, ; ile biten komutları) tek tek çalıştırır.
+     * @return array{0:bool,1:int,2:array<int,string>}
+     */
+    private static function executeSqlFile(string $path): array
+    {
+        $pdo = Connection::pdo();
+        $handle = fopen($path, 'r');
+        if (!$handle) throw new \RuntimeException('SQL dosyası okunamadı.');
+
+        $buffer = '';
+        $count = 0;
+        $errors = [];
+        $pdo->exec('SET FOREIGN_KEY_CHECKS=0');
+
+        while (($line = fgets($handle)) !== false) {
+            $trimmed = trim($line);
+            if ($trimmed === '' || str_starts_with($trimmed, '--') || str_starts_with($trimmed, '#')) {
+                continue;
+            }
+            $buffer .= $line;
+            if (str_ends_with($trimmed, ';')) {
+                $stmt = trim($buffer);
+                $buffer = '';
+                if ($stmt === '' || $stmt === ';') continue;
+                try {
+                    $pdo->exec($stmt);
+                    $count++;
+                } catch (\Throwable $e) {
+                    $errors[] = substr($stmt, 0, 80) . '... → ' . $e->getMessage();
+                }
+            }
+        }
+        fclose($handle);
+        $pdo->exec('SET FOREIGN_KEY_CHECKS=1');
+
+        return [count($errors) === 0, $count, $errors];
+    }
+
     // ---- Adım 4: Admin oluştur ----------------------------------------
 
     public function createAdmin(Request $request): Response

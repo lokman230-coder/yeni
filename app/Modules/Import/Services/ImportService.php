@@ -26,6 +26,114 @@ use App\Support\Encrypter;
  */
 final class ImportService
 {
+    /**
+     * Import başlamadan önce hedef tabloların ihtiyaç duyduğu sütunların
+     * (imported_from, external_id) gerçekten var olduğunu doğrular; eksikse
+     * migration 0070'in yaptığı gibi güvenli/nullable şekilde otomatik ekler.
+     * Böylece bir sütun eksik olduğu için veri sessizce hiç aktarılmamış olmaz.
+     * @return array<int,string> Otomatik eklenen düzeltmelerin özeti (boşsa: her şey zaten tamamdı)
+     */
+    public static function ensureImportSchema(): array
+    {
+        $fixed = [];
+        $tables = ['customers', 'orders', 'invoices', 'domains', 'hosting_accounts', 'tickets', 'products'];
+        foreach ($tables as $tbl) {
+            try {
+                $cols = Connection::select("SHOW COLUMNS FROM `$tbl`");
+            } catch (\Throwable) {
+                continue; // tablo yoksa (bu sistemde kullanılmıyorsa) atla
+            }
+            $names = array_column($cols, 'Field');
+            $adds = [];
+            if (!in_array('imported_from', $names, true)) {
+                $adds[] = "ADD COLUMN `imported_from` VARCHAR(32) NULL, ADD INDEX `idx_{$tbl}_imported` (`imported_from`)";
+            }
+            if (!in_array('external_id', $names, true)) {
+                $adds[] = "ADD COLUMN `external_id` VARCHAR(64) NULL";
+            }
+            if ($adds) {
+                try {
+                    Connection::query("ALTER TABLE `$tbl` " . implode(', ', $adds));
+                    $fixed[] = "$tbl: " . implode(', ', array_map(fn($a) => str_contains($a, 'imported_from') ? 'imported_from' : 'external_id', $adds));
+                } catch (\Throwable $e) {
+                    $fixed[] = "$tbl: HATA — " . $e->getMessage();
+                }
+            }
+        }
+        return $fixed;
+    }
+
+    /**
+     * WHMCS/WISECP/Blesta gibi kaynaklardan CANLI bağlanmak yerine, hazır bir
+     * .sql dosyasını (dump) kendi veritabanımıza BENZERSİZ BİR ÖNEK ile
+     * (örn. imp_whmcs_ab12cd_) aktarır. Böylece driver'lar (WhmcsDriver vb.)
+     * hiç değişmeden, sadece config['prefix'] bu değere ayarlanarak, sanki
+     * canlı bağlanmış gibi bu tablolardan veri okuyabilir.
+     * @return array{0:bool,1:int,2:array<int,string>,3:string} [ok, calisan_komut_sayisi, hatalar, uretilen_onek]
+     */
+    public static function importSqlDump(string $sqlPath, string $sourceKey): array
+    {
+        $prefix = 'imp_' . preg_replace('/[^a-z0-9]/', '', strtolower($sourceKey)) . '_' . bin2hex(random_bytes(4)) . '_';
+
+        $handle = fopen($sqlPath, 'r');
+        if (!$handle) {
+            return [false, 0, ['SQL dosyası okunamadı.'], $prefix];
+        }
+
+        $pdo = Connection::pdo();
+        $pdo->exec('SET FOREIGN_KEY_CHECKS=0');
+
+        $buffer = '';
+        $count = 0;
+        $errors = [];
+        // CREATE TABLE / INSERT INTO / DROP TABLE / ALTER TABLE / LOCK TABLES sonrasındaki
+        // tablo adının başına oneki ekler. Standart mysqldump çıktısı için yeterli.
+        $tablePattern = '/\b(CREATE TABLE(?:\s+IF NOT EXISTS)?|INSERT(?:\s+IGNORE)?\s+INTO|DROP TABLE(?:\s+IF EXISTS)?|ALTER TABLE|LOCK TABLES|UPDATE|REPLACE INTO)\s+`?([a-zA-Z_][a-zA-Z0-9_]*)`?/i';
+
+        while (($line = fgets($handle)) !== false) {
+            $trimmed = trim($line);
+            if ($trimmed === '' || str_starts_with($trimmed, '--') || str_starts_with($trimmed, '#') || str_starts_with($trimmed, '/*')) {
+                continue;
+            }
+            $buffer .= $line;
+            if (str_ends_with($trimmed, ';')) {
+                $stmt = trim($buffer);
+                $buffer = '';
+                if ($stmt === '' || $stmt === ';') continue;
+
+                $stmt = preg_replace_callback($tablePattern, function ($m) use ($prefix) {
+                    return $m[1] . ' `' . $prefix . $m[2] . '`';
+                }, $stmt) ?? $stmt;
+
+                try {
+                    $pdo->exec($stmt);
+                    $count++;
+                } catch (\Throwable $e) {
+                    $errors[] = substr($stmt, 0, 100) . '... → ' . $e->getMessage();
+                }
+            }
+        }
+        fclose($handle);
+        $pdo->exec('SET FOREIGN_KEY_CHECKS=1');
+
+        return [count($errors) < $count, $count, $errors, $prefix];
+    }
+
+    /** Yüklenen dump'tan oluşan geçici (prefix'li) tabloları siler. */
+    public static function dropSqlDumpTables(string $prefix): void
+    {
+        if (!preg_match('/^imp_[a-z0-9_]+_$/', $prefix)) {
+            return; // güvenlik: sadece bizim ürettiğimiz desendeki onekler silinebilir
+        }
+        $rows = Connection::select('SHOW TABLES');
+        foreach ($rows as $row) {
+            $name = array_values($row)[0] ?? '';
+            if ($name !== '' && str_starts_with($name, $prefix)) {
+                Connection::query("DROP TABLE IF EXISTS `$name`");
+            }
+        }
+    }
+
     /** Yeni bir job oluştur — pending durumda. */
     public static function createJob(string $source, array $config, string $type, ?int $adminId = null): int
     {

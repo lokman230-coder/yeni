@@ -147,6 +147,28 @@ $step = $step ?? 1;
                     </div>
                 </form>
 
+                <div style="display:flex;align-items:center;gap:12px;margin:24px 0">
+                    <div style="flex:1;height:1px;background:#e5e7eb"></div>
+                    <span style="color:#9ca3af;font-size:13px">veya</span>
+                    <div style="flex:1;height:1px;background:#e5e7eb"></div>
+                </div>
+
+                <div style="padding:16px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px">
+                    <h3 style="margin:0 0 6px;font-size:15px">📦 Hazır SQL Dosyası Yükle</h3>
+                    <p style="color:#6b7280;font-size:13px;margin:0 0 12px">
+                        Elinde zaten hazır bir veritabanı yedeği (.sql) varsa, migration çalıştırmak yerine
+                        doğrudan onu yükleyebilirsin. .sql dosyasını .zip içine koyup da yükleyebilirsin.
+                        Büyük dosyalarda sunucunun yükleme boyutu limitine (php.ini → upload_max_filesize) takılabilir.
+                    </p>
+                    <form method="post" action="/kurulum/sql-yukle" enctype="multipart/form-data" onsubmit="return confirm('Yüklenecek SQL dosyasındaki komutlar veritabanında çalıştırılacak. Emin misin?')">
+                        <?= csrf() ?>
+                        <div style="display:flex;gap:10px;align-items:center">
+                            <input type="file" name="sql_file" accept=".sql,.zip" required style="flex:1;padding:8px;border:1px solid #e5e7eb;border-radius:8px;background:#fff">
+                            <button type="submit" style="padding:10px 18px;background:#374151;color:#fff;border:0;border-radius:8px;font-weight:600;cursor:pointer;white-space:nowrap">⬆ Yükle ve Çalıştır</button>
+                        </div>
+                    </form>
+                </div>
+
             <?php elseif ($step === 4): ?>
                 <h2 style="margin-top:0;font-size:20px">👤 Süper Admin Oluştur</h2>
                 <p style="color:#6b7280;font-size:14px;margin:4px 0 20px">Yönetici paneline erişecek ilk kullanıcı. Şifrenizi kesinlikle güvenli bir yerde saklayın.</p>
@@ -189,7 +211,13 @@ $step = $step ?? 1;
                     </div>
                     <div style="margin-bottom:20px">
                         <label style="display:block;font-size:12px;font-weight:600;margin-bottom:4px">Site URL (https zorunlu)</label>
-                        <input type="url" name="app_url" value="<?= e($env['APP_URL'] ?: 'https://ahost.web.tr') ?>" required style="width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:8px;box-sizing:border-box">
+                        <?php
+                        $aoDetectedScheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+                        $aoDetectedHost = $_SERVER['HTTP_HOST'] ?? 'localhost';
+                        $aoDetectedBase = function_exists('app_base_path') ? app_base_path() : '';
+                        $aoDetectedUrl = $aoDetectedScheme . '://' . $aoDetectedHost . $aoDetectedBase;
+                        ?>
+                        <input type="url" name="app_url" value="<?= e($env['APP_URL'] ?: $aoDetectedUrl) ?>" required style="width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:8px;box-sizing:border-box">
                     </div>
 
                     <details style="margin-bottom:20px">

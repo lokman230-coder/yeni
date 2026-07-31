@@ -101,6 +101,28 @@ function ahost_config($key = null, $default = null) {
     }
     return $value;
 }
+if (!function_exists('ao_request_path_no_base')) {
+    /**
+     * REQUEST_URI'den, sistemin kurulu olduğu alt klasör önekini
+     * (AHO_BASE_PATH — örn. "/ahostone") çıkararak gerçek route yolunu
+     * döner. Böylece "/admin", "/kurulum" gibi başlangıç kontrolleri
+     * sistem hangi klasöre kurulursa kurulsun doğru çalışır.
+     */
+    function ao_request_path_no_base(): string {
+        $uri = (string) ($_SERVER['REQUEST_URI'] ?? '/');
+        $path = (string) (parse_url($uri, PHP_URL_PATH) ?: '/');
+        $path = '/' . ltrim($path, '/');
+        $base = defined('AHO_BASE_PATH') ? AHO_BASE_PATH : '';
+        if ($base !== '') {
+            if ($path === $base) {
+                $path = '/';
+            } elseif (str_starts_with($path, $base . '/')) {
+                $path = substr($path, strlen($base));
+            }
+        }
+        return '/' . ltrim($path, '/');
+    }
+}
 function db() {
     static $pdo;
     if ($pdo) return $pdo;

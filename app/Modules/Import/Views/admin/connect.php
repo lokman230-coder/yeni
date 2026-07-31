@@ -43,6 +43,30 @@ $view->section('content');
         </div>
     </form>
 
+    <div style="display:flex;align-items:center;gap:12px;margin:20px 0">
+        <div style="flex:1;height:1px;background:var(--aho-color-border)"></div>
+        <span style="color:var(--aho-color-ink-500);font-size:13px">veya</span>
+        <div style="flex:1;height:1px;background:var(--aho-color-border)"></div>
+    </div>
+
+    <div class="aho-card" style="padding:24px;margin-bottom:16px">
+        <h3 style="margin-top:0;font-size:15px">📦 Hazır SQL / Zip Dosyasından Aktar</h3>
+        <p style="color:var(--aho-color-ink-500);font-size:13px;margin:0 0 14px">
+            <?= e($driver->label()) ?> sunucusuna canlı bağlanamıyorsan (örn. güvenlik duvarı, farklı sunucu), veritabanı yedeğini (.sql)
+            buradan yükleyebilirsin — .sql dosyasını .zip içine koyarak da yükleyebilirsin. Yükleme sonrası, aşağıdaki
+            veri seçme ekranı canlı bağlantıdaymış gibi aynı şekilde çalışır.
+        </p>
+        <form method="post" action="/admin/veri-aktarimi/baglan/<?= e($source) ?>/sql-yukle" enctype="multipart/form-data"
+              onsubmit="return confirm('SQL dosyasındaki tablolar kendi veritabanına (ayrı bir önekle, mevcut verilerine dokunmadan) yüklenecek. Devam?')">
+            <?= csrf() ?>
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+                <input type="file" name="sql_file" accept=".sql,.zip" required
+                       style="flex:1;min-width:220px;padding:10px;border:1px solid var(--aho-color-border);border-radius:8px">
+                <button type="submit" class="aho-btn aho-btn--outline">⬆ Yükle ve Devam Et</button>
+            </div>
+        </form>
+    </div>
+
     <?php if (!empty($counts) && !empty($test) && $test['ok']): ?>
     <form method="post" action="/admin/veri-aktarimi/baglan/<?= e($source) ?>/baslat">
         <?= csrf() ?>

@@ -47,6 +47,19 @@ final class Request
         if ($pos !== false) {
             $uri = substr($uri, 0, $pos);
         }
+        $uri = '/' . ltrim($uri, '/');
+
+        // Alt klasöre kurulmuşsa (örn. /ahostone), route eşleşmesi için
+        // o kısmı baştan at — route'lar hep kök varsayımıyla tanımlı.
+        if (defined('AHO_BASE_PATH') && AHO_BASE_PATH !== '') {
+            $base = AHO_BASE_PATH;
+            if ($uri === $base) {
+                $uri = '/';
+            } elseif (str_starts_with($uri, $base . '/')) {
+                $uri = substr($uri, strlen($base));
+            }
+        }
+
         return '/' . ltrim($uri, '/');
     }
 

@@ -1,6 +1,8 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /
+    # RewriteBase kasıtlı olarak belirtilmiyor — Apache bunu otomatik olarak
+    # .htaccess dosyasının bulunduğu klasöre göre hesaplar. Böylece sistem
+    # kökte de, bir alt klasörde de (örn. /ahostone) doğru çalışır.
 
     # Hassas dosyaları web erişiminden koru
     RewriteRule ^(?:\.env|\.git|composer\.(?:json|lock)|phpunit\.xml|Dockerfile|README\.md|QUICKSTART\.md|console|config/|database/|storage/|tests/|docs/|planning/|k8s/)(?:/|$) - [F,L,NC]

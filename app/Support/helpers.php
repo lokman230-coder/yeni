@@ -170,7 +170,7 @@ if (!function_exists('app')) {
 if (!function_exists('current_url')) {
     function current_url(): string
     {
-        return $_SERVER['REQUEST_URI'] ?? '/';
+        return function_exists('ao_request_path_no_base') ? ao_request_path_no_base() : ($_SERVER['REQUEST_URI'] ?? '/');
     }
 }
 

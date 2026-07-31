@@ -91,14 +91,16 @@ final class AdminHostingAccountController
     {
         $id = (int) $request->param('id');
         $account = Connection::selectOne(
-            "SELECT ha.*, c.email AS customer_email FROM hosting_accounts ha
+            "SELECT ha.*, c.email AS customer_email, oi.unit_price, oi.setup_fee, oi.line_total, oi.period, oi.order_id
+             FROM hosting_accounts ha
              LEFT JOIN customers c ON c.id = ha.customer_id
+             LEFT JOIN order_items oi ON oi.id = ha.order_item_id
              WHERE ha.id = ?", [$id]
         );
         if (!$account) return Response::notFound();
 
         $products = Connection::select("SELECT id, name, type FROM products ORDER BY name ASC");
-        $servers = Connection::select("SELECT id, name, hostname, is_active FROM hosting_servers ORDER BY is_active DESC, name ASC");
+        $servers = Connection::select("SELECT id, name, hostname, panel, is_active FROM hosting_servers ORDER BY is_active DESC, name ASC");
 
         return Response::html((new View())->render('admin::hosting_accounts.edit', [
             'title'    => 'Hosting Hesabı #' . $account['id'],
@@ -111,14 +113,33 @@ final class AdminHostingAccountController
     public function update(Request $request): Response
     {
         $id = (int) $request->param('id');
-        $account = Connection::selectOne('SELECT id, customer_id FROM hosting_accounts WHERE id = ?', [$id]);
+        $account = Connection::selectOne('SELECT * FROM hosting_accounts WHERE id = ?', [$id]);
         if (!$account) return Response::notFound();
+
+        $newProductId = (int) $request->input('product_id', 0) ?: null;
+        $newServerId = (int) $request->input('server_id', 0) ?: (int) $account['server_id'] ?: null;
+
+        // Paket değişti ve sunucu/kullanıcı biliniyorsa panelde de değiştirmeyi dene.
+        if ($newProductId && $newProductId !== (int) $account['product_id'] && $newServerId && !empty($account['username'])) {
+            $newProduct = Connection::selectOne('SELECT name FROM products WHERE id = ?', [$newProductId]);
+            if ($newProduct) {
+                try {
+                    $ok = \App\Modules\Hosting\HostingManager::forServer($newServerId)
+                        ->changePackage((string) $account['username'], (string) $newProduct['name']);
+                    if (!$ok) {
+                        SessionManager::flash('error', 'Not: Panelde paket değişimi başarısız oldu, sadece kayıt güncellendi. Sunucuda elle kontrol et.');
+                    }
+                } catch (\Throwable) {
+                    SessionManager::flash('error', 'Not: Panele bağlanılamadı, sadece kayıt güncellendi. Sunucuda elle kontrol et.');
+                }
+            }
+        }
 
         Connection::update('hosting_accounts', [
             'domain'        => trim((string) $request->input('domain', '')),
             'username'      => trim((string) $request->input('username', '')) ?: null,
-            'product_id'    => (int) $request->input('product_id', 0) ?: null,
-            'server_id'     => (int) $request->input('server_id', 0) ?: null,
+            'product_id'    => $newProductId,
+            'server_id'     => $newServerId,
             'status'        => (string) $request->input('status', 'active'),
             'next_due_date' => trim((string) $request->input('next_due_date', '')) ?: null,
             'notes'         => trim((string) $request->input('notes', '')) ?: null,
